@@ -1,0 +1,22 @@
+{
+  "default": true,
+  "MD013": {
+    "line_length": 400,
+    "heading_line_length": 400,
+    "code_block_line_length": 400,
+    "tables": false
+  },
+  "MD033": false,
+  "MD041": false,
+  "MD040": true,
+  "MD046": {
+    "style": "fenced"
+  },
+  "MD049": {
+    "style": "underscore"
+  },
+  "MD050": {
+    "style": "asterisk"
+  },
+  "MD051": false
+}

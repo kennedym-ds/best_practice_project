@@ -7,6 +7,7 @@ A comprehensive guide to version control with Git and GitHub, designed for compl
 1. [Introduction](#introduction)
 2. [Understanding Version Control](#understanding-version-control)
 3. [Installing Git](#installing-git)
+
 4. [Git Basics](#git-basics)
 5. [Working with Branches](#working-with-branches)
 6. [GitHub Fundamentals](#github-fundamentals)
@@ -55,6 +56,7 @@ Version control is essential for:
 #### Repository (Repo)
 
 A repository is a folder that Git tracks. It contains:
+
 - Your project files
 - A hidden `.git` folder with all version history
 - Metadata about your project
@@ -62,6 +64,7 @@ A repository is a folder that Git tracks. It contains:
 #### Commit
 
 A commit is a snapshot of your project at a specific point in time. Each commit:
+
 - Records what changed
 - Includes a message describing the change
 - Has a unique ID (SHA hash)
@@ -70,6 +73,7 @@ A commit is a snapshot of your project at a specific point in time. Each commit:
 #### Branch
 
 A branch is an independent line of development. Branches let you:
+
 - Work on features without affecting the main code
 - Experiment safely
 - Develop multiple features simultaneously
@@ -78,19 +82,22 @@ A branch is an independent line of development. Branches let you:
 #### Remote
 
 A remote is a version of your repository hosted elsewhere (like GitHub). It allows:
+
 - Backup of your code
 - Collaboration with others
 - Access from multiple computers
 
 ### How Git Works
 
-```
+```text
 Working Directory  →  Staging Area  →  Repository
 (Your files)          (Ready to commit)  (Committed history)
 
 1. Edit files         2. Stage changes   3. Commit changes
+
    (modify code)         (git add)          (git commit)
-```
+
+```text
 
 **Working Directory**: Where you edit files
 **Staging Area (Index)**: Where you prepare changes for commit
@@ -105,29 +112,36 @@ Working Directory  →  Staging Area  →  Repository
 1. Download Git from [git-scm.com](https://git-scm.com/download/win)
 2. Run the installer
 3. Use recommended settings (default options are fine)
+
 4. Verify installation:
 
 ```powershell
+
 git --version
-```
+
+```bash
 
 #### Option 2: Using Winget
 
 ```powershell
+
 winget install --id Git.Git -e --source winget
-```
+
+```bash
 
 ### macOS
 
 #### Option 1: Using Homebrew (Recommended)
 
 ```bash
+
 # Install Homebrew if not already installed
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install Git
 brew install git
-```
+
+```bash
 
 #### Option 2: Official Installer
 
@@ -137,47 +151,60 @@ brew install git
 #### Option 3: Xcode Command Line Tools
 
 ```bash
+
 xcode-select --install
-```
+
+```bash
 
 Verify installation:
 
 ```bash
+
 git --version
-```
+
+```bash
 
 ### Linux
 
 #### Ubuntu/Debian
 
 ```bash
+
 sudo apt update
 sudo apt install git
-```
+
+```bash
 
 #### Fedora/CentOS
 
 ```bash
+
 sudo dnf install git
-```
+
+```bash
 
 #### Arch Linux
 
 ```bash
+
 sudo pacman -S git
-```
+
+```bash
 
 Verify installation:
 
 ```bash
+
 git --version
-```
+
+```bash
 
 ### Initial Configuration
 
 After installing Git, configure your identity:
 
 ```bash
+
 # Set your name
 git config --global user.name "Your Name"
 
@@ -194,7 +221,8 @@ git config --global core.editor "nano"  # Nano editor
 
 # View your configuration
 git config --list
-```
+
+```text
 
 ## Git Basics
 
@@ -203,6 +231,7 @@ git config --list
 #### Starting a new project
 
 ```bash
+
 # Create a new directory
 mkdir my-project
 cd my-project
@@ -211,21 +240,24 @@ cd my-project
 git init
 
 # Your project is now a Git repository!
-```
+```text
 
 #### Cloning an existing repository
 
 ```bash
+
 # Clone from GitHub
 git clone https://github.com/username/repository.git
 
 # Clone into a specific folder
 git clone https://github.com/username/repository.git my-folder
-```
+
+```text
 
 ### Checking Repository Status
 
 ```bash
+
 # See current status
 git status
 
@@ -234,7 +266,7 @@ git status
 # - Which files have changes
 # - Which files are staged
 # - Which files are untracked
-```
+```text
 
 ### The Basic Workflow
 
@@ -245,6 +277,7 @@ Edit files in your favorite editor.
 #### 2. Check what changed
 
 ```bash
+
 # See which files changed
 git status
 
@@ -253,11 +286,13 @@ git diff
 
 # See changes for a specific file
 git diff filename.py
-```
+
+```python
 
 #### 3. Stage your changes
 
 ```bash
+
 # Stage a specific file
 git add filename.py
 
@@ -269,11 +304,13 @@ git add file1.py file2.py
 
 # Stage all files of a certain type
 git add *.py
-```
+
+```python
 
 #### 4. Commit your changes
 
 ```bash
+
 # Commit with message
 git commit -m "Add new feature"
 
@@ -286,11 +323,13 @@ git commit -m "Add user authentication
 
 # Stage and commit in one step (only for tracked files)
 git commit -am "Fix typo in README"
-```
+
+```text
 
 ### Viewing History
 
 ```bash
+
 # View commit history
 git log
 
@@ -308,11 +347,13 @@ git log -p
 
 # View last N commits
 git log -5  # Last 5 commits
-```
+
+```text
 
 ### Viewing Commit Details
 
 ```bash
+
 # Show details of latest commit
 git show
 
@@ -321,13 +362,15 @@ git show abc123
 
 # Show changes in specific file from commit
 git show abc123:path/to/file.py
-```
+
+```python
 
 ### Undoing Changes
 
 #### Discard changes in working directory
 
 ```bash
+
 # Discard changes in specific file
 git checkout -- filename.py
 
@@ -337,11 +380,13 @@ git checkout -- .
 # Modern syntax (Git 2.23+)
 git restore filename.py
 git restore .
-```
+
+```python
 
 #### Unstage files
 
 ```bash
+
 # Unstage specific file
 git reset HEAD filename.py
 
@@ -350,24 +395,28 @@ git reset HEAD
 
 # Modern syntax (Git 2.23+)
 git restore --staged filename.py
-```
+
+```python
 
 #### Amend last commit
 
 ```bash
+
 # Fix last commit message
 git commit --amend -m "Corrected message"
 
 # Add forgotten files to last commit
 git add forgotten_file.py
 git commit --amend --no-edit
-```
+
+```python
 
 ## Working with Branches
 
 ### Why Use Branches?
 
 Branches allow you to:
+
 - Develop features independently
 - Keep main code stable
 - Experiment without risk
@@ -376,6 +425,7 @@ Branches allow you to:
 ### Creating and Switching Branches
 
 ```bash
+
 # Create a new branch
 git branch feature-login
 
@@ -388,11 +438,13 @@ git checkout -b feature-login
 # Modern syntax (Git 2.23+)
 git switch feature-login           # Switch to existing branch
 git switch -c feature-login        # Create and switch to new branch
-```
+
+```text
 
 ### Viewing Branches
 
 ```bash
+
 # List local branches
 git branch
 
@@ -405,11 +457,13 @@ git branch -v
 # See which branches are merged
 git branch --merged
 git branch --no-merged
-```
+
+```text
 
 ### Merging Branches
 
 ```bash
+
 # Switch to target branch (usually main)
 git checkout main
 
@@ -418,11 +472,13 @@ git merge feature-login
 
 # Merge with no fast-forward (creates merge commit)
 git merge --no-ff feature-login
-```
+
+```text
 
 ### Deleting Branches
 
 ```bash
+
 # Delete merged branch
 git branch -d feature-login
 
@@ -431,13 +487,15 @@ git branch -D feature-login
 
 # Delete remote branch
 git push origin --delete feature-login
-```
+
+```text
 
 ### Handling Merge Conflicts
 
 When Git can't automatically merge changes, you'll get a conflict:
 
 ```bash
+
 # 1. Git will tell you there's a conflict
 git merge feature-branch
 # Auto-merging file.py
@@ -462,7 +520,8 @@ git add file.py
 
 # 6. Complete the merge
 git commit -m "Resolve merge conflict"
-```
+
+```python
 
 ## GitHub Fundamentals
 
@@ -471,6 +530,7 @@ git commit -m "Resolve merge conflict"
 1. Go to [github.com](https://github.com)
 2. Click "Sign up"
 3. Follow the registration process
+
 4. Verify your email address
 
 ### Creating a Repository on GitHub
@@ -480,10 +540,15 @@ git commit -m "Resolve merge conflict"
 1. Click the "+" icon in top right
 2. Select "New repository"
 3. Fill in details:
+
    - Repository name
+
    - Description (optional)
+
    - Public or Private
+
    - Initialize with README (optional)
+
 4. Click "Create repository"
 
 #### From Command Line
@@ -495,11 +560,13 @@ gh repo create my-project --public
 # Or push existing local repository
 git remote add origin https://github.com/username/my-project.git
 git push -u origin main
-```
+
+```text
 
 ### Connecting Local and Remote Repositories
 
 ```bash
+
 # Add remote
 git remote add origin https://github.com/username/repository.git
 
@@ -511,11 +578,13 @@ git remote set-url origin https://github.com/username/new-repository.git
 
 # Remove remote
 git remote remove origin
-```
+
+```text
 
 ### Pushing to GitHub
 
 ```bash
+
 # Push to remote repository
 git push origin main
 
@@ -530,11 +599,13 @@ git push --all origin
 
 # Push with tags
 git push --tags
-```
+
+```text
 
 ### Pulling from GitHub
 
 ```bash
+
 # Fetch and merge changes
 git pull origin main
 
@@ -546,11 +617,13 @@ git fetch origin
 
 # View fetched changes
 git log origin/main
-```
+
+```text
 
 ### Cloning Repositories
 
 ```bash
+
 # Clone repository
 git clone https://github.com/username/repository.git
 
@@ -559,7 +632,8 @@ git clone -b branch-name https://github.com/username/repository.git
 
 # Clone with different name
 git clone https://github.com/username/repository.git my-folder
-```
+
+```text
 
 ## Collaboration Workflow
 
@@ -570,22 +644,28 @@ git clone https://github.com/username/repository.git my-folder
 1. Go to the repository on GitHub
 2. Click "Fork" button (top right)
 3. GitHub creates a copy in your account
+
 4. Clone your fork:
 
 ```bash
+
 git clone https://github.com/YOUR-USERNAME/repository.git
 cd repository
-```
+
+```bash
 
 5. Add original repository as upstream:
 
 ```bash
+
 git remote add upstream https://github.com/ORIGINAL-OWNER/repository.git
-```
+
+```bash
 
 ### Keeping Your Fork Updated
 
 ```bash
+
 # Fetch changes from upstream
 git fetch upstream
 
@@ -597,42 +677,55 @@ git merge upstream/main
 
 # Push to your fork
 git push origin main
-```
+
+```text
 
 ### Creating Pull Requests
 
 **Pull Requests (PRs)** propose changes to a repository.
 
-#### Process:
+#### Process
 
 1. **Create a branch for your changes**:
 
 ```bash
+
 git checkout -b fix-typo
-```
+
+```bash
 
 2. **Make your changes and commit**:
 
 ```bash
+
 git add README.md
 git commit -m "Fix typo in README"
-```
+
+```makefile
 
 3. **Push to your fork**:
 
 ```bash
+
 git push origin fix-typo
-```
+
+```bash
 
 4. **Create PR on GitHub**:
+
    - Go to your fork on GitHub
+
    - Click "Pull requests" tab
+
    - Click "New pull request"
+
    - Select your branch
+
    - Fill in title and description
+
    - Click "Create pull request"
 
-#### Good PR Practices:
+#### Good PR Practices
 
 - **Clear title**: "Fix typo in README" not "Update file"
 - **Detailed description**: Explain what and why
@@ -648,13 +741,15 @@ As a reviewer:
 1. Read the description
 2. Check the "Files changed" tab
 3. Add comments on specific lines
+
 4. Test the changes locally if needed:
 
 ```bash
 # Fetch PR to local branch
 git fetch origin pull/123/head:pr-123
 git checkout pr-123
-```
+
+```bash
 
 5. Approve or request changes
 6. Merge if approved
@@ -663,27 +758,34 @@ git checkout pr-123
 
 **Issues** track bugs, features, and tasks.
 
-#### Creating an Issue:
+#### Creating an Issue
 
 1. Go to repository on GitHub
 2. Click "Issues" tab
 3. Click "New issue"
+
 4. Fill in:
+
    - Title (clear and concise)
+
    - Description (what, why, how to reproduce)
+
    - Labels (bug, feature, documentation, etc.)
+
 5. Click "Submit new issue"
 
-#### Good Issue Examples:
+#### Good Issue Examples
 
 **Bug Report**:
-```
+
+```text
 Title: Login button not working on mobile
 
 Description:
 When clicking the login button on mobile devices, nothing happens.
 
 Steps to reproduce:
+
 1. Open app on mobile browser
 2. Navigate to login page
 3. Click login button
@@ -693,36 +795,44 @@ Actual: Nothing happens
 
 Browser: Chrome Mobile 120
 OS: Android 13
-```
+
+```text
 
 **Feature Request**:
-```
+
+```text
+
 Title: Add dark mode support
 
 Description:
 Add a dark mode theme option to reduce eye strain in low-light conditions.
 
 Proposed solution:
+
 - Add theme toggle in settings
 - Save preference in localStorage
 - Use CSS variables for colors
-```
+
+```text
 
 ## Best Practices
 
 ### Commit Messages
 
-#### Format:
+#### Format
 
-```
+```text
+
 <type>: <subject>
 
 <body>
 
 <footer>
-```
 
-#### Types:
+```text
+
+#### Types
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -731,9 +841,10 @@ Proposed solution:
 - `test`: Adding tests
 - `chore`: Maintenance tasks
 
-#### Good Examples:
+#### Good Examples
 
 ```bash
+
 # Simple commit
 git commit -m "feat: add user login form"
 
@@ -750,9 +861,10 @@ git commit -m "refactor: change API response format
 
 BREAKING CHANGE: Response now returns data in 'payload' field
 instead of root level. Update client code accordingly."
-```
 
-#### Commit Message Tips:
+```text
+
+#### Commit Message Tips
 
 - Use imperative mood: "add feature" not "added feature"
 - Keep first line under 50 characters
@@ -764,12 +876,14 @@ instead of root level. Update client code accordingly."
 ### When to Commit
 
 **Commit often**:
+
 - After completing a logical unit of work
 - Before taking a break
 - After fixing a bug
 - After adding a feature
 
 **Don't commit**:
+
 - Broken code (unless work-in-progress marker)
 - Generated files
 - Sensitive data (passwords, API keys)
@@ -777,19 +891,20 @@ instead of root level. Update client code accordingly."
 
 ### Branching Strategy
 
-#### Feature Branch Workflow:
+#### Feature Branch Workflow
 
 ```bash
 main                 o---o---o---o---o
                           \         /
 feature-login              o---o---o
-```
+
+```bash
 
 1. Create branch from `main`
 2. Develop feature
 3. Merge back to `main`
 
-#### Naming Conventions:
+#### Naming Conventions
 
 - `feature/user-authentication`
 - `fix/database-connection`
@@ -804,6 +919,7 @@ feature-login              o---o---o
 Create a `.gitignore` file to exclude files:
 
 ```gitignore
+
 # Python
 __pycache__/
 *.py[cod]
@@ -833,16 +949,19 @@ Thumbs.db
 outputs/
 *.log
 data/raw/
-```
 
-#### Commit:
+```text
+
+#### Commit
+
 - Source code
 - Configuration files
 - Documentation
 - Tests
 - Build scripts
 
-#### Don't commit:
+#### Don't commit
+
 - Dependencies (`node_modules/`, `venv/`)
 - Build artifacts (`dist/`, `build/`)
 - Environment variables (`.env`)
@@ -888,11 +1007,13 @@ gh repo create my-project --public
 # 6. Push to GitHub
 git remote add origin https://github.com/username/my-project.git
 git push -u origin main
-```
+
+```text
 
 ### Contributing to an Open Source Project
 
 ```bash
+
 # 1. Fork repository on GitHub (click Fork button)
 
 # 2. Clone your fork
@@ -922,28 +1043,34 @@ git fetch upstream
 git checkout main
 git merge upstream/main
 git push origin main
-```
+
+```text
 
 ### Fixing a Mistake
 
-#### Wrong commit message:
+#### Wrong commit message
 
 ```bash
+
 # Fix last commit message
 git commit --amend -m "Correct message"
-```
-
-#### Forgot to add files:
 
 ```bash
+
+#### Forgot to add files
+
+```bash
+
 # Add files to last commit
 git add forgotten_file.py
 git commit --amend --no-edit
-```
-
-#### Committed to wrong branch:
 
 ```bash
+
+#### Committed to wrong branch
+
+```bash
+
 # On wrong branch
 git log  # Copy commit hash (abc123)
 
@@ -954,21 +1081,25 @@ git cherry-pick abc123
 # Go back and remove from wrong branch
 git checkout wrong-branch
 git reset --hard HEAD~1
-```
 
-#### Want to undo last commit:
+```text
+
+#### Want to undo last commit
 
 ```bash
+
 # Undo commit, keep changes
 git reset HEAD~1
 
 # Undo commit, discard changes
 git reset --hard HEAD~1
-```
+
+```text
 
 ### Working with Multiple Remotes
 
 ```bash
+
 # Add multiple remotes
 git remote add origin https://github.com/you/project.git
 git remote add upstream https://github.com/original/project.git
@@ -981,7 +1112,8 @@ git push colleague feature-branch
 # Fetch from specific remote
 git fetch upstream
 git fetch colleague
-```
+
+```text
 
 ## Troubleshooting
 
@@ -994,6 +1126,7 @@ git fetch colleague
 **Solution**:
 
 ```bash
+
 # Generate SSH key
 ssh-keygen -t ed25519 -C "your.email@example.com"
 
@@ -1007,7 +1140,7 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 
 # Add to GitHub: Settings → SSH and GPG keys → New SSH key
-```
+```text
 
 #### "fatal: refusing to merge unrelated histories"
 
@@ -1016,8 +1149,10 @@ cat ~/.ssh/id_ed25519.pub
 **Solution**:
 
 ```bash
+
 git pull origin main --allow-unrelated-histories
-```
+
+```bash
 
 #### "Your branch and 'origin/main' have diverged"
 
@@ -1026,16 +1161,20 @@ git pull origin main --allow-unrelated-histories
 **Solution 1** (if local changes should be kept):
 
 ```bash
+
 git pull --rebase origin main
 git push
-```
+
+```bash
 
 **Solution 2** (if remote should be kept):
 
 ```bash
+
 git fetch origin
 git reset --hard origin/main
-```
+
+```bash
 
 #### Merge conflicts
 
@@ -1044,6 +1183,7 @@ git reset --hard origin/main
 **Solution**:
 
 ```bash
+
 # 1. See conflicted files
 git status
 
@@ -1055,7 +1195,8 @@ git add conflicted_file.py
 
 # 4. Complete merge
 git commit
-```
+
+```python
 
 #### Accidentally committed sensitive data
 
@@ -1064,6 +1205,7 @@ git commit
 **Solution**:
 
 ```bash
+
 # Remove file from history
 git filter-branch --force --index-filter \
   "git rm --cached --ignore-unmatch path/to/file" \
@@ -1073,7 +1215,7 @@ git filter-branch --force --index-filter \
 git push origin --force --all
 
 # IMPORTANT: Rotate the compromised credentials immediately!
-```
+```text
 
 #### Can't push: "Updates were rejected"
 
@@ -1082,6 +1224,7 @@ git push origin --force --all
 **Solution**:
 
 ```bash
+
 # Pull first
 git pull origin main
 
@@ -1089,11 +1232,13 @@ git pull origin main
 
 # Then push
 git push origin main
-```
+
+```text
 
 ### Getting Help
 
 ```bash
+
 # General help
 git help
 
@@ -1104,11 +1249,13 @@ git help branch
 # Quick help
 git commit --help
 git branch -h
-```
+
+```text
 
 ### Checking Git Configuration
 
 ```bash
+
 # View all configuration
 git config --list
 
@@ -1118,7 +1265,8 @@ git config user.email
 
 # View configuration with file locations
 git config --list --show-origin
-```
+
+```text
 
 ## Additional Resources
 
@@ -1205,7 +1353,8 @@ git remote add origin <url>       # Add remote
 git remote -v                     # View remotes
 git fetch                         # Fetch changes
 git push origin <branch>          # Push branch
-```
+
+```text
 
 ---
 

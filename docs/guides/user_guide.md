@@ -7,6 +7,7 @@ Complete guide to using the Data Analysis Project for data loading, cleaning, an
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
 3. [DataLoader Module](#dataloader-module)
+
 4. [DataCleaner Module](#datacleaner-module)
 5. [DataAnalyzer Module](#dataanalyzer-module)
 6. [Visualizer Module](#visualizer-module)
@@ -36,14 +37,17 @@ Quick start:
 
 ```bash
 pip install -e .
-```
+
+```bash
 
 ### Basic Import
 
 ```python
+
 from data_analysis import DataLoader, DataCleaner, DataAnalyzer, Visualizer
 import pandas as pd
-```
+
+```python
 
 ## DataLoader Module
 
@@ -60,6 +64,7 @@ The `DataLoader` class handles loading and saving data in multiple formats.
 #### Loading CSV Files
 
 ```python
+
 from data_analysis import DataLoader
 
 loader = DataLoader()
@@ -81,11 +86,13 @@ df = loader.load_csv(
     'data/raw/logs.csv',
     parse_dates=['timestamp', 'created_at']
 )
-```
+
+```text
 
 #### Loading Excel Files
 
 ```python
+
 # Load first sheet (default)
 df = loader.load_excel('data/raw/report.xlsx')
 
@@ -95,11 +102,12 @@ df = loader.load_excel('data/raw/report.xlsx', sheet_name='Sheet2')
 # Load multiple sheets
 dfs = loader.load_excel('data/raw/report.xlsx', sheet_name=None)
 # Returns dict: {'Sheet1': df1, 'Sheet2': df2, ...}
-```
+```text
 
 #### Loading JSON Files
 
 ```python
+
 # Load JSON array
 df = loader.load_json('data/raw/records.json')
 
@@ -108,13 +116,15 @@ df = loader.load_json('data/raw/nested_data.json')
 
 # Load with specific orientation
 df = loader.load_json('data/raw/data.json', orient='records')
-```
+
+```json
 
 ### Saving Data
 
 #### Saving CSV Files
 
 ```python
+
 # Basic save
 loader.save_csv(df, 'data/processed/cleaned_data.csv')
 
@@ -123,11 +133,13 @@ loader.save_csv(df, 'data/processed/output.csv', index=False)
 
 # With custom delimiter
 loader.save_csv(df, 'data/processed/data.tsv', sep='\t')
-```
+
+```text
 
 #### Saving Excel Files
 
 ```python
+
 # Basic save
 loader.save_excel(df, 'data/processed/report.xlsx')
 
@@ -136,11 +148,13 @@ loader.save_excel(df, 'data/processed/report.xlsx', sheet_name='Results')
 
 # Without index
 loader.save_excel(df, 'data/processed/output.xlsx', index=False)
-```
+
+```text
 
 #### Saving JSON Files
 
 ```python
+
 # Basic save
 loader.save_json(df, 'data/processed/output.json')
 
@@ -149,7 +163,8 @@ loader.save_json(df, 'data/processed/records.json', orient='records')
 
 # With indentation for readability
 loader.save_json(df, 'data/processed/data.json', indent=2)
-```
+
+```json
 
 ## DataCleaner Module
 
@@ -158,15 +173,18 @@ The `DataCleaner` class provides methods for cleaning and preparing data.
 ### Creating a Cleaner
 
 ```python
+
 from data_analysis import DataCleaner
 
 # Create cleaner with DataFrame
 cleaner = DataCleaner(df)
-```
+
+```python
 
 ### Handling Missing Values
 
 ```python
+
 # Drop rows with any missing values
 cleaner.handle_missing_values(strategy='drop')
 
@@ -190,11 +208,13 @@ cleaner.handle_missing_values(strategy='backward_fill')
 
 # Interpolate values
 cleaner.handle_missing_values(strategy='interpolate')
-```
+
+```text
 
 ### Removing Duplicates
 
 ```python
+
 # Remove all duplicate rows
 cleaner.remove_duplicates()
 
@@ -203,11 +223,13 @@ cleaner.remove_duplicates(subset=['id', 'date'])
 
 # Keep last occurrence instead of first
 cleaner.remove_duplicates(keep='last')
-```
+
+```text
 
 ### Converting Data Types
 
 ```python
+
 # Convert single column
 cleaner.convert_dtypes({'age': 'int64'})
 
@@ -227,11 +249,13 @@ cleaner.convert_dtypes({
     'category': 'category',        # Categorical
     'is_active': 'bool'            # Boolean
 })
-```
+
+```text
 
 ### Detecting Outliers
 
 ```python
+
 # Detect outliers using Z-score method
 outlier_indices = cleaner.detect_outliers(
     column='salary',
@@ -247,11 +271,13 @@ outlier_indices = cleaner.detect_outliers(
 )
 
 print(f"Found {len(outlier_indices)} outliers")
-```
+
+```text
 
 ### Removing Outliers
 
 ```python
+
 # Remove outliers using Z-score
 cleaner.remove_outliers(
     column='salary',
@@ -265,13 +291,15 @@ cleaner.remove_outliers(
     method='iqr',
     multiplier=1.5
 )
-```
+
+```text
 
 ### Method Chaining
 
 DataCleaner supports method chaining for compact code:
 
 ```python
+
 cleaner = DataCleaner(df)
 cleaned_df = (cleaner
     .handle_missing_values(strategy='mean')
@@ -280,14 +308,17 @@ cleaned_df = (cleaner
     .remove_outliers(column='salary', method='zscore')
     .get_data()
 )
-```
+
+```text
 
 ### Getting Cleaned Data
 
 ```python
+
 # Get cleaned DataFrame
 cleaned_df = cleaner.get_data()
-```
+
+```python
 
 ## DataAnalyzer Module
 
@@ -296,36 +327,43 @@ The `DataAnalyzer` class provides statistical analysis capabilities.
 ### Creating an Analyzer
 
 ```python
+
 from data_analysis import DataAnalyzer
 
 analyzer = DataAnalyzer(df)
-```
+
+```python
 
 ### Summary Statistics
 
 ```python
+
 # Get comprehensive summary statistics
 summary = analyzer.get_summary_statistics()
 # Returns: count, mean, std, min, 25%, 50%, 75%, max, skewness, kurtosis
 
 # For specific columns only
 summary = analyzer.get_summary_statistics(columns=['age', 'salary'])
-```
+
+```text
 
 ### Missing Value Analysis
 
 ```python
+
 # Get missing value report
 missing_report = analyzer.get_missing_value_report()
 # Returns DataFrame with: missing_count, missing_percentage, data_type
 
 # Check specific columns
 missing_report = analyzer.get_missing_value_report(columns=['age', 'email'])
-```
+
+```text
 
 ### Correlation Analysis
 
 ```python
+
 # Get correlation matrix (Pearson)
 corr_matrix = analyzer.get_correlation_matrix()
 
@@ -336,22 +374,26 @@ corr_kendall = analyzer.get_correlation_matrix(method='kendall')
 
 # For specific columns only
 corr_matrix = analyzer.get_correlation_matrix(columns=['age', 'salary', 'score'])
-```
+
+```text
 
 ### Finding High Correlations
 
 ```python
+
 # Find correlations above threshold
 high_corr = analyzer.find_high_correlations(threshold=0.7)
 # Returns list of tuples: [(col1, col2, correlation), ...]
 
 # Adjust threshold
 strong_corr = analyzer.find_high_correlations(threshold=0.9)
-```
+
+```text
 
 ### Group Analysis
 
 ```python
+
 # Analyze by single column
 dept_stats = analyzer.group_analysis(
     group_column='department',
@@ -365,11 +407,13 @@ region_stats = analyzer.group_analysis(
     agg_columns=['sales', 'profit'],
     agg_funcs=['sum', 'mean', 'min', 'max', 'count']
 )
-```
+
+```text
 
 ### Linear Regression
 
 ```python
+
 # Simple linear regression
 slope, intercept, r_squared = analyzer.simple_linear_regression(
     x='age',
@@ -379,11 +423,13 @@ slope, intercept, r_squared = analyzer.simple_linear_regression(
 print(f"Slope: {slope:.2f}")
 print(f"Intercept: {intercept:.2f}")
 print(f"R² Score: {r_squared:.4f}")
-```
+
+```text
 
 ### Value Counts
 
 ```python
+
 # Get value counts for categorical column
 counts = analyzer.get_value_counts(column='department')
 
@@ -398,11 +444,13 @@ top_10 = analyzer.get_value_counts(
     column='product',
     top_n=10
 )
-```
+
+```text
 
 ### Anomaly Detection
 
 ```python
+
 # Detect anomalies using Z-score method
 anomaly_indices = analyzer.detect_anomalies(
     column='price',
@@ -418,7 +466,8 @@ anomaly_indices = analyzer.detect_anomalies(
 
 # Get anomaly records
 anomalies = df.loc[anomaly_indices]
-```
+
+```text
 
 ## Visualizer Module
 
@@ -427,14 +476,17 @@ The `Visualizer` class creates publication-quality visualizations.
 ### Creating a Visualizer
 
 ```python
+
 from data_analysis import Visualizer
 
 viz = Visualizer(df)
-```
+
+```python
 
 ### Histograms
 
 ```python
+
 # Basic histogram
 viz.create_histogram(column='age')
 
@@ -455,11 +507,13 @@ viz.create_histogram(
     bins=15,
     save_path='outputs/visualizations/age_dist.png'
 )
-```
+
+```text
 
 ### Box Plots
 
 ```python
+
 # Basic box plot
 viz.create_boxplot(column='salary')
 
@@ -476,11 +530,13 @@ viz.create_boxplot(
     column='score',
     horizontal=True
 )
-```
+
+```text
 
 ### Scatter Plots
 
 ```python
+
 # Basic scatter plot
 viz.create_scatter(x='age', y='salary')
 
@@ -501,11 +557,13 @@ viz.create_scatter(
     size='profit',
     hue='region'
 )
-```
+
+```text
 
 ### Correlation Heatmaps
 
 ```python
+
 # Basic heatmap
 viz.create_correlation_heatmap()
 
@@ -522,11 +580,13 @@ viz.create_correlation_heatmap(
     annot=True,
     save_path='outputs/visualizations/correlation.png'
 )
-```
+
+```text
 
 ### Line Plots
 
 ```python
+
 # Basic line plot
 viz.create_line_plot(x='date', y='sales')
 
@@ -546,11 +606,13 @@ viz.create_line_plot(
     y='temperature',
     marker='o'
 )
-```
+
+```text
 
 ### Bar Plots
 
 ```python
+
 # Basic bar plot
 viz.create_bar_plot(x='category', y='sales')
 
@@ -570,11 +632,13 @@ viz.create_bar_plot(
     y='headcount',
     horizontal=True
 )
-```
+
+```text
 
 ### Pair Plots
 
 ```python
+
 # Basic pair plot (all numeric columns)
 viz.create_pairplot()
 
@@ -591,11 +655,13 @@ viz.create_pairplot(
     hue='category',
     diag_kind='kde'  # or 'hist'
 )
-```
+
+```text
 
 ### Count Plots
 
 ```python
+
 # Basic count plot
 viz.create_countplot(column='department')
 
@@ -613,13 +679,15 @@ viz.create_countplot(
     column='status',
     horizontal=True
 )
-```
+
+```text
 
 ## Complete Workflow Example
 
 Here's a complete example combining all modules:
 
 ```python
+
 from data_analysis import DataLoader, DataCleaner, DataAnalyzer, Visualizer
 from pathlib import Path
 
@@ -719,93 +787,121 @@ loader.save_csv(cleaned_df, output_data_dir / 'employees_cleaned.csv')
 loader.save_csv(dept_analysis, output_data_dir / 'department_analysis.csv')
 
 print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
-```
+
+```text
 
 ## Best Practices
 
 ### Data Loading
 
 1. **Always specify data types** when possible:
+
    ```python
    df = loader.load_csv(
        'data.csv',
        dtype={'id': str, 'amount': float}
    )
-   ```
+
+```python
 
 2. **Parse dates explicitly**:
+
    ```python
    df = loader.load_csv('data.csv', parse_dates=['created_at', 'updated_at'])
-   ```
+
+```python
 
 3. **Handle large files efficiently**:
+
    ```python
    # Load in chunks for large files
    chunks = pd.read_csv('large_file.csv', chunksize=10000)
    for chunk in chunks:
        process_chunk(chunk)
-   ```
+
+```python
 
 ### Data Cleaning
 
 1. **Understand your data first**:
+
    ```python
    # Check data before cleaning
    print(df.info())
    print(df.describe())
    print(df.isnull().sum())
-   ```
+
+```python
 
 2. **Clean in the right order**:
+
    - Remove duplicates first
+
    - Handle missing values
+
    - Convert data types
+
    - Remove outliers last
 
 3. **Document your cleaning decisions**:
+
    ```python
    # Good: Clear reasoning
    cleaner.handle_missing_values(strategy='median')  # Using median due to skewed distribution
-   ```
+
+```python
 
 ### Data Analysis
 
 1. **Check for data quality issues**:
+
    ```python
    # Check missing values
    missing_report = analyzer.get_missing_value_report()
    if missing_report['missing_percentage'].max() > 10:
        print("Warning: High missing value percentage")
-   ```
+
+```python
 
 2. **Validate correlations**:
+
    ```python
    # Check for multicollinearity
    high_corr = analyzer.find_high_correlations(threshold=0.9)
    if high_corr:
        print(f"Warning: High correlations found: {high_corr}")
-   ```
+
+```python
 
 3. **Use appropriate statistical methods**:
+
    ```python
    # Pearson for linear relationships
    corr_pearson = analyzer.get_correlation_matrix(method='pearson')
-   
+
    # Spearman for monotonic relationships
    corr_spearman = analyzer.get_correlation_matrix(method='spearman')
-   ```
+
+```text
 
 ### Visualization
 
 1. **Choose the right plot type**:
+
    - Histogram: Distribution of single variable
+
    - Box plot: Distribution with outliers
+
    - Scatter: Relationship between two variables
+
    - Line plot: Trends over time
+
    - Bar plot: Comparisons between categories
+
    - Heatmap: Multiple correlations
 
 2. **Always add labels and titles**:
+
    ```python
    viz.create_scatter(
        x='age',
@@ -814,56 +910,68 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
        xlabel='Age (years)',            # Units included
        ylabel='Salary ($)'              # Units included
    )
-   ```
+
+```text
 
 3. **Save high-resolution plots**:
+
    ```python
    import matplotlib.pyplot as plt
-   
+
    viz.create_histogram(column='price')
    plt.savefig('output.png', dpi=300, bbox_inches='tight')
-   ```
+
+```python
 
 ## Tips and Tricks
 
 ### Performance Tips
 
 1. **Use appropriate data types**:
+
    ```python
    # Categorical data
    cleaner.convert_dtypes({'category': 'category'})  # Saves memory
-   ```
+
+```python
 
 2. **Filter early**:
+
    ```python
    # Filter before analysis
    df_filtered = df[df['date'] > '2023-01-01']
    analyzer = DataAnalyzer(df_filtered)
-   ```
+
+```python
 
 3. **Avoid copying DataFrames**:
+
    ```python
    # DataCleaner modifies in place by default
    cleaner = DataCleaner(df)
    cleaner.remove_duplicates()  # df is modified
-   ```
+
+```python
 
 ### Common Patterns
 
 1. **Creating analysis pipelines**:
+
    ```python
    def analyze_dataset(file_path):
        loader = DataLoader()
        df = loader.load_csv(file_path)
-       
+
        cleaner = DataCleaner(df)
        cleaned_df = cleaner.handle_missing_values().remove_duplicates().get_data()
-       
+
        analyzer = DataAnalyzer(cleaned_df)
        return analyzer.get_summary_statistics()
-   ```
+
+```text
 
 2. **Batch visualization**:
+
    ```python
    columns_to_plot = ['age', 'salary', 'experience']
    for col in columns_to_plot:
@@ -871,9 +979,11 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
            column=col,
            save_path=f'outputs/{col}_dist.png'
        )
-   ```
+
+```text
 
 3. **Comparing groups**:
+
    ```python
    for group in df['department'].unique():
        group_df = df[df['department'] == group]
@@ -883,35 +993,42 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
            title=f'Salary Distribution - {group}',
            save_path=f'outputs/salary_{group}.png'
        )
-   ```
+
+```text
 
 ### Debugging Tips
 
 1. **Check data at each step**:
+
    ```python
    print(f"Original shape: {df.shape}")
    cleaner = DataCleaner(df)
    cleaner.remove_duplicates()
    print(f"After deduplication: {cleaner.df.shape}")
-   ```
+
+```python
 
 2. **Inspect problematic records**:
+
    ```python
    # Find rows with missing values
    missing_rows = df[df.isnull().any(axis=1)]
    print(missing_rows)
-   
+
    # Find outliers
    outliers = analyzer.detect_anomalies(column='price', method='zscore')
    print(df.loc[outliers])
-   ```
+
+```text
 
 3. **Validate outputs**:
+
    ```python
    # After cleaning
    assert cleaner.df.duplicated().sum() == 0, "Duplicates still present!"
    assert cleaner.df.isnull().sum().sum() == 0, "Missing values remain!"
-   ```
+
+```python
 
 ---
 

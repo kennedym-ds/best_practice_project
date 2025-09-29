@@ -37,11 +37,13 @@ cd best_practice_project
 
 # Add the upstream repository
 git remote add upstream https://github.com/ORIGINAL_OWNER/best_practice_project.git
-```
+
+```text
 
 ### 2. Set Up Development Environment
 
 ```bash
+
 # Create a virtual environment
 python -m venv venv
 
@@ -56,11 +58,13 @@ pip install -e ".[dev,docs,test]"
 
 # Install pre-commit hooks
 pre-commit install
-```
+
+```text
 
 ### 3. Verify Installation
 
 ```bash
+
 # Run tests to ensure everything works
 pytest
 
@@ -69,7 +73,8 @@ make lint
 
 # Check types
 make type-check
-```
+
+```makefile
 
 ## 🔄 Development Workflow
 
@@ -78,6 +83,7 @@ make type-check
 Always create a new branch for your work:
 
 ```bash
+
 # Update your main branch
 git checkout main
 git pull upstream main
@@ -87,7 +93,8 @@ git checkout -b feature/your-feature-name
 
 # Or for bug fixes
 git checkout -b fix/bug-description
-```
+
+```text
 
 ### Branch Naming Conventions
 
@@ -120,11 +127,12 @@ pytest --cov=src/data_analysis --cov-report=html
 
 # View coverage report
 # Open htmlcov/index.html in your browser
-```
+```text
 
 ### 4. Commit Your Changes
 
 ```bash
+
 # Stage your changes
 git add .
 
@@ -133,7 +141,8 @@ git commit -m "feat: add new data validation feature"
 
 # Push to your fork
 git push origin feature/your-feature-name
-```
+
+```text
 
 ## 📏 Coding Standards
 
@@ -150,6 +159,7 @@ We follow [PEP 8](https://pep8.org/) with some modifications:
 ### Code Formatting
 
 ```bash
+
 # Format code with Black
 black src/ tests/
 
@@ -158,13 +168,15 @@ isort src/ tests/
 
 # Or use the Makefile
 make format
-```
+
+```makefile
 
 ### Type Hints
 
 All functions must include type hints:
 
 ```python
+
 from typing import Optional, List, Dict, Any
 import pandas as pd
 
@@ -191,13 +203,15 @@ def process_data(
         raise ValueError("DataFrame cannot be empty")
     # Implementation here
     return {"status": "success"}
-```
+
+```text
 
 ### Docstring Style
 
 Use Google-style docstrings:
 
 ```python
+
 def example_function(param1: str, param2: int = 10) -> bool:
     """
     Brief description of the function.
@@ -221,25 +235,33 @@ def example_function(param1: str, param2: int = 10) -> bool:
         True
     """
     pass
-```
+
+```text
 
 ## 🧪 Testing Guidelines
 
 ### Test Organization
 
 - **Unit Tests**: Test individual functions/methods in isolation
+
   - Located in `tests/unit/`
+
   - Mock external dependencies
+
   - Fast execution
 
 - **Integration Tests**: Test component interactions
+
   - Located in `tests/integration/`
+
   - Test real workflows
+
   - May be slower
 
 ### Writing Tests
 
 ```python
+
 import pytest
 import pandas as pd
 from data_analysis import DataLoader
@@ -273,10 +295,11 @@ class TestDataLoader:
     def test_load_csv_file_not_found(self):
         """Test CSV loading with non-existent file."""
         loader = DataLoader()
-        
+
         with pytest.raises(FileNotFoundError):
             loader.load_csv("nonexistent.csv")
-```
+
+```text
 
 ### Test Coverage
 
@@ -286,6 +309,7 @@ class TestDataLoader:
 - Use parametrized tests for multiple scenarios
 
 ```python
+
 @pytest.mark.parametrize("strategy,expected", [
     ("drop", 8),
     ("mean", 10),
@@ -296,7 +320,8 @@ def test_handle_missing_values(strategy, expected):
     """Test different missing value strategies."""
     # Test implementation
     pass
-```
+
+```text
 
 ## 📚 Documentation
 
@@ -305,11 +330,13 @@ def test_handle_missing_values(strategy, expected):
 1. **Code Documentation**: Docstrings for all public APIs
 2. **User Guides**: Step-by-step tutorials in `docs/guides/`
 3. **API Reference**: Auto-generated from docstrings
+
 4. **README**: Project overview and quick start
 
 ### Building Documentation
 
 ```bash
+
 # Build HTML documentation
 cd docs
 make html
@@ -319,7 +346,8 @@ make html
 
 # Or use Makefile from root
 make docs
-```
+
+```makefile
 
 ### Documentation Standards
 
@@ -332,13 +360,15 @@ make docs
 
 ### Format
 
-```
+```text
+
 <type>(<scope>): <subject>
 
 <body>
 
 <footer>
-```
+
+```text
 
 ### Types
 
@@ -353,6 +383,7 @@ make docs
 ### Examples
 
 ```bash
+
 # Feature
 feat(data_loader): add support for Parquet files
 
@@ -372,7 +403,8 @@ Fixes #456
 docs(readme): update installation instructions
 
 Added section on virtual environment setup for Windows users.
-```
+
+```text
 
 ### Best Practices
 
@@ -382,24 +414,28 @@ Added section on virtual environment setup for Windows users.
 - No period at the end of subject
 - Separate subject from body with blank line
 - Wrap body at 72 characters
-- Explain *what* and *why*, not *how*
+- Explain _what_ and _why_, not _how_
 
 ## 🔀 Pull Request Process
 
 ### Before Submitting
 
 1. **Update your branch**:
+
    ```bash
    git checkout main
    git pull upstream main
    git checkout your-feature-branch
    git rebase main
-   ```
+
+```bash
 
 2. **Run all checks**:
+
    ```bash
    make all  # Runs format, lint, type-check, and test
-   ```
+
+```makefile
 
 3. **Update documentation**: If your changes affect usage
 
@@ -410,16 +446,22 @@ Added section on virtual environment setup for Windows users.
 ### Submitting Pull Request
 
 1. Push to your fork:
+
    ```bash
    git push origin your-feature-branch
-   ```
+
+```bash
 
 2. Go to GitHub and create a Pull Request
 
 3. Fill out the PR template completely:
+
    - Description of changes
+
    - Related issues
+
    - Testing performed
+
    - Screenshots (if applicable)
 
 4. Request review from maintainers
@@ -428,11 +470,13 @@ Added section on virtual environment setup for Windows users.
 
 Use the same format as commit messages:
 
-```
+```text
+
 feat(module): add new feature
 fix(module): resolve bug
 docs: update user guide
-```
+
+```text
 
 ### Review Process
 
@@ -458,6 +502,7 @@ docs: update user guide
 ### Creating a Good Issue
 
 **Bug Reports** should include:
+
 - Clear, descriptive title
 - Steps to reproduce
 - Expected vs actual behavior
@@ -466,6 +511,7 @@ docs: update user guide
 - Code samples (minimal reproducible example)
 
 **Feature Requests** should include:
+
 - Clear description of the feature
 - Use cases and motivation
 - Proposed implementation (if applicable)
@@ -501,6 +547,7 @@ docs: update user guide
 1. **Start Small**: Begin with small contributions to familiarize yourself
 2. **Ask Questions**: Don't hesitate to ask for clarification
 3. **Be Patient**: Reviews may take time
+
 4. **Stay Engaged**: Respond to feedback promptly
 5. **Learn**: Use this as an opportunity to improve your skills
 
@@ -516,4 +563,4 @@ Thank you for contributing to the Data Analysis Project! Your efforts help make 
 
 ---
 
-*This contributing guide is adapted from open source best practices.*
+_This contributing guide is adapted from open source best practices._

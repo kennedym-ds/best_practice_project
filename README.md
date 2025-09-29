@@ -98,7 +98,7 @@ visualizer.create_correlation_heatmap()
 
 ## 🏗️ Project Structure
 
-```
+```text
 best_practice_project/
 ├── .github/
 │   └── workflows/
@@ -183,6 +183,28 @@ mypy src/data_analysis/
 make all
 ```
 
+### Documentation Linting
+
+Markdown documentation is linted using `markdownlint-cli2`:
+
+```bash
+# Install markdownlint globally (one-time setup)
+npm install -g markdownlint-cli2
+
+# Lint all project documentation
+markdownlint-cli2 "*.md" "docs/**/*.md"
+
+# Lint specific file
+markdownlint-cli2 README.md
+```
+
+Configuration is in `.markdownlint.json` with rules for:
+
+- Line length (400 chars for documentation)
+- Code block language specification
+- Consistent list and emphasis styles
+- Proper spacing around headings and lists
+
 ### Using Makefile
 
 The project includes a `Makefile` for common tasks:
@@ -212,7 +234,7 @@ This project maintains high code quality through comprehensive testing:
 
 ### Test Structure
 
-```
+```text
 tests/
 ├── unit/
 │   ├── test_data_loader.py     # DataLoader tests

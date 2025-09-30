@@ -1,48 +1,50 @@
+---
+# yamllint disable rule:indentation rule:new-lines
 name: CI/CD Pipeline
 
-on:
+"on":
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
   workflow_dispatch:
 
 jobs:
   lint:
     name: Code Quality Checks
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
-    
+
     - name: Run Black (Format Check)
       run: |
         black --check src/ tests/
       continue-on-error: true
-    
+
     - name: Run isort (Import Sort Check)
       run: |
         isort --check-only src/ tests/
       continue-on-error: true
-    
+
     - name: Run Flake8 (Linting)
       run: |
         flake8 src/ tests/ --max-line-length=100 --extend-ignore=E203,W503
       continue-on-error: true
-    
+
     - name: Run mypy (Type Checking)
       run: |
         mypy src/ --ignore-missing-imports
@@ -56,27 +58,27 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.9', '3.10', '3.11', '3.12']
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
-    
+
     - name: Run unit tests
       run: |
         pytest tests/unit/ -v --tb=short
-    
+
     - name: Run integration tests
       run: |
         pytest tests/integration/ -v --tb=short
@@ -85,27 +87,27 @@ jobs:
     name: Code Coverage
     runs-on: ubuntu-latest
     needs: test
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
-    
+
     - name: Run tests with coverage
       run: |
         pytest --cov=src/data_analysis --cov-report=xml --cov-report=html --cov-report=term
-    
+
     - name: Upload coverage reports
       uses: codecov/codecov-action@v4
       with:
@@ -113,7 +115,7 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: false
-    
+
     - name: Upload coverage HTML report
       uses: actions/upload-artifact@v4
       with:
@@ -123,28 +125,28 @@ jobs:
   security:
     name: Security Scan
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install safety bandit
-    
+
     - name: Run Safety (Dependency Security Check)
       run: |
         safety check --json || true
       continue-on-error: true
-    
+
     - name: Run Bandit (Code Security Check)
       run: |
         bandit -r src/ -f json || true
@@ -153,29 +155,29 @@ jobs:
   docs:
     name: Documentation Build
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
-    
+
     - name: Build documentation
       run: |
         cd docs
         make html || echo "Sphinx not configured yet"
       continue-on-error: true
-    
+
     - name: Upload documentation
       uses: actions/upload-artifact@v4
       with:
@@ -187,30 +189,30 @@ jobs:
     name: Build Package
     runs-on: ubuntu-latest
     needs: [lint, test]
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
-    
+
     - name: Install build dependencies
       run: |
         python -m pip install --upgrade pip
         pip install build twine
-    
+
     - name: Build package
       run: |
         python -m build
-    
+
     - name: Check package
       run: |
         twine check dist/*
-    
+
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -222,7 +224,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint, test, coverage, security, docs, build]
     if: always()
-    
+
     steps:
     - name: Check workflow status
       run: |

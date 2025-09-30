@@ -4742,7 +4742,7 @@ jobs:
         with:
           name: my-package
           path: dist/
-  
+
   publish:
     needs: build
     steps:
@@ -4810,7 +4810,7 @@ jobs:
 
 strategy:
   fail-fast: false  # ✅ For test matrix (see all failures)
-  
+
 jobs:
   validate:
     steps:
@@ -4839,7 +4839,7 @@ jobs:
       - run: black --check
 
       - run: flake8
-  
+
   slow-tests:    # Runs in 5 minutes
     needs: quick-checks  # Only run if quick checks pass
     steps:
@@ -4860,13 +4860,13 @@ jobs:
 jobs:
   lint:
     # No dependencies - runs immediately
-  
+
   test:
     # No dependencies - runs in parallel with lint
-  
+
   build:
     needs: [lint, test]  # Waits for both
-  
+
   deploy:
     needs: build  # Sequential deployment
 
@@ -4942,16 +4942,16 @@ jobs:
 jobs:
   test:
     # Stage 1: Test
-  
+
   build:
     needs: test
     # Stage 2: Build (only if tests pass)
-  
+
   deploy-staging:
     needs: build
     if: github.ref == 'refs/heads/develop'
     # Stage 3: Deploy to staging
-  
+
   deploy-production:
     needs: build
     if: github.ref == 'refs/heads/main'

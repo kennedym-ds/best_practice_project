@@ -123,7 +123,7 @@ ensure_newline_before_comments = true
 
 [tool.mypy]
 python_version = "3.9"
-warn_return_any = true
+warn_return_any = false  # Disabled due to pandas Any types
 warn_unused_configs = true
 disallow_untyped_defs = true
 disallow_incomplete_defs = true

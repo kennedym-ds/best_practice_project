@@ -6,9 +6,14 @@
     "code_block_line_length": 400,
     "tables": false
   },
+  "MD024": {
+    "siblings_only": true
+  },
+  "MD029": false,
   "MD033": false,
-  "MD041": false,
+  "MD036": false,
   "MD040": true,
+  "MD041": false,
   "MD046": {
     "style": "fenced"
   },

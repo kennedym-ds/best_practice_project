@@ -28,7 +28,7 @@ A comprehensive Python data analysis project demonstrating best practices in sof
    ```bash
    git clone https://github.com/yourusername/best_practice_project.git
    cd best_practice_project
-   ```
+   ```text
 
 2. **Create and activate a virtual environment**:
 
@@ -40,7 +40,7 @@ A comprehensive Python data analysis project demonstrating best practices in sof
    # Unix/MacOS
    python -m venv venv
    source venv/bin/activate
-   ```
+   ```text
 
 3. **Install the package**:
 
@@ -50,7 +50,7 @@ A comprehensive Python data analysis project demonstrating best practices in sof
 
    # For developers (includes testing and documentation tools)
    pip install -e ".[dev,docs,test]"
-   ```
+   ```text
 
 ### Basic Usage
 
@@ -76,7 +76,7 @@ correlations = analyzer.get_correlation_matrix()
 visualizer = Visualizer(clean_df)
 visualizer.create_histogram('salary', bins=10, kde=True)
 visualizer.create_correlation_heatmap()
-```
+```text
 
 ## 📖 Documentation
 
@@ -134,7 +134,7 @@ best_practice_project/
 ├── README.md                   # This file
 ├── requirements.txt            # Production dependencies
 └── requirements-dev.txt        # Development dependencies
-```
+```text
 
 ## 🔧 Development
 
@@ -146,7 +146,7 @@ pip install -e ".[dev,docs,test]"
 
 # Install pre-commit hooks
 pre-commit install
-```
+```text
 
 ### Running Tests
 
@@ -162,11 +162,11 @@ pytest tests/unit/test_data_loader.py
 
 # Run with verbose output
 pytest -v
-```
+```text
 
 ### Code Quality
 
-```bash
+```text
 # Format code
 black src/ tests/
 
@@ -181,7 +181,7 @@ mypy src/data_analysis/
 
 # Run all checks
 make all
-```
+```text
 
 ### Documentation Linting
 
@@ -196,7 +196,7 @@ markdownlint-cli2 "*.md" "docs/**/*.md"
 
 # Lint specific file
 markdownlint-cli2 README.md
-```
+```text
 
 Configuration is in `.markdownlint.json` with rules for:
 
@@ -209,7 +209,7 @@ Configuration is in `.markdownlint.json` with rules for:
 
 The project includes a `Makefile` for common tasks:
 
-```bash
+```text
 make help           # Show all available commands
 make install        # Install package
 make install-dev    # Install with dev dependencies
@@ -221,7 +221,7 @@ make type-check     # Run type checker
 make docs           # Build documentation
 make clean          # Clean generated files
 make all            # Run format, lint, type-check, and test
-```
+```text
 
 ## 🧪 Testing Strategy
 
@@ -244,7 +244,7 @@ tests/
 ├── integration/
 │   └── test_pipeline.py        # End-to-end pipeline tests
 └── conftest.py                 # Shared fixtures and configuration
-```
+```bash
 
 ## 🚀 CI/CD Pipeline
 

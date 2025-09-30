@@ -71,7 +71,7 @@ pip install -e .
 # Or with development tools
 pip install -e ".[dev,docs,test]"
 
-```text
+```bash
 
 ## Detailed Installation Steps
 
@@ -89,7 +89,7 @@ pip install -e ".[dev,docs,test]"
    ```powershell
    python --version
 
-```bash
+```text
 
 #### Step 2: Install Git
 
@@ -100,7 +100,7 @@ pip install -e ".[dev,docs,test]"
    ```powershell
    git --version
 
-```bash
+```text
 
 #### Step 3: Clone the Repository
 
@@ -179,7 +179,7 @@ brew install python@3.9
 # Verify installation
 python3 --version
 
-```python
+```text
 
 #### Step 3: Install Git
 
@@ -247,7 +247,7 @@ pytest
 # Check installed packages
 pip list
 
-```text
+```bash
 
 ### Linux Installation
 
@@ -267,7 +267,7 @@ sudo apt install python3.9 python3.9-venv python3-pip
 python3 --version
 pip3 --version
 
-```python
+```text
 
 ##### Fedora/CentOS
 
@@ -280,7 +280,7 @@ sudo dnf install python39 python3-pip
 python3 --version
 pip3 --version
 
-```python
+```text
 
 ##### Arch Linux
 
@@ -293,7 +293,7 @@ sudo pacman -S python python-pip
 python --version
 pip --version
 
-```python
+```text
 
 #### Step 2: Install Git
 
@@ -366,7 +366,7 @@ pytest
 # Check installed packages
 pip list
 
-```text
+```bash
 
 ## Verifying Installation
 
@@ -405,7 +405,7 @@ pytest
 # tests/integration/test_pipeline.py ........    [100%]
 #
 # ==================== 47 passed in 5.23s ====================
-```python
+```text
 
 ### 3. Check Installed Packages
 
@@ -413,7 +413,7 @@ pytest
 
 pip list | grep data-analysis
 # Should show: data-analysis 0.1.0
-```bash
+```text
 
 ### 4. Test Basic Functionality
 
@@ -484,7 +484,7 @@ python3 -m pip --version
 # If pip is missing, install it:
 python -m ensurepip --upgrade
 
-```python
+```text
 
 #### Issue: "No module named 'data_analysis'"
 
@@ -496,7 +496,7 @@ python -m ensurepip --upgrade
   ```bash
   pip install -e .
 
-```bash
+```text
 
 - Check if you're in the correct directory (project root)
 
@@ -511,7 +511,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -e .
 
-```bash
+```text
 
 #### Issue: Tests fail with "ModuleNotFoundError"
 
@@ -539,7 +539,7 @@ pip install --upgrade pip
 # Or temporarily disable SSL verification (not recommended)
 pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -e .
 
-```python
+```text
 
 #### Issue: Slow installation on Windows
 
@@ -586,7 +586,7 @@ pre-commit install
 
 # Read the contributing guide
 # See CONTRIBUTING.md
-```markdown
+```text
 
 ### For Users
 
@@ -600,7 +600,7 @@ pip install -e .
 # Or install from PyPI (when published)
 pip install data-analysis
 
-```text
+```bash
 
 ## Understanding Virtual Environments
 
@@ -634,7 +634,7 @@ rmdir /s venv
 # Unix/macOS:
 rm -rf venv
 
-```text
+```bash
 
 ### When to Use Virtual Environments
 

@@ -38,7 +38,7 @@ Quick start:
 ```bash
 pip install -e .
 
-```bash
+```text
 
 ### Basic Import
 
@@ -117,7 +117,7 @@ df = loader.load_json('data/raw/nested_data.json')
 # Load with specific orientation
 df = loader.load_json('data/raw/data.json', orient='records')
 
-```json
+```text
 
 ### Saving Data
 
@@ -164,7 +164,7 @@ loader.save_json(df, 'data/processed/records.json', orient='records')
 # With indentation for readability
 loader.save_json(df, 'data/processed/data.json', indent=2)
 
-```json
+```python
 
 ## DataCleaner Module
 
@@ -179,7 +179,7 @@ from data_analysis import DataCleaner
 # Create cleaner with DataFrame
 cleaner = DataCleaner(df)
 
-```python
+```text
 
 ### Handling Missing Values
 
@@ -332,7 +332,7 @@ from data_analysis import DataAnalyzer
 
 analyzer = DataAnalyzer(df)
 
-```python
+```text
 
 ### Summary Statistics
 
@@ -467,7 +467,7 @@ anomaly_indices = analyzer.detect_anomalies(
 # Get anomaly records
 anomalies = df.loc[anomaly_indices]
 
-```text
+```python
 
 ## Visualizer Module
 
@@ -481,7 +481,7 @@ from data_analysis import Visualizer
 
 viz = Visualizer(df)
 
-```python
+```text
 
 ### Histograms
 
@@ -802,14 +802,14 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
        dtype={'id': str, 'amount': float}
    )
 
-```python
+```text
 
 2. **Parse dates explicitly**:
 
    ```python
    df = loader.load_csv('data.csv', parse_dates=['created_at', 'updated_at'])
 
-```python
+```text
 
 3. **Handle large files efficiently**:
 
@@ -819,7 +819,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    for chunk in chunks:
        process_chunk(chunk)
 
-```python
+```text
 
 ### Data Cleaning
 
@@ -831,7 +831,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    print(df.describe())
    print(df.isnull().sum())
 
-```python
+```yaml
 
 2. **Clean in the right order**:
 
@@ -849,7 +849,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    # Good: Clear reasoning
    cleaner.handle_missing_values(strategy='median')  # Using median due to skewed distribution
 
-```python
+```text
 
 ### Data Analysis
 
@@ -861,7 +861,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    if missing_report['missing_percentage'].max() > 10:
        print("Warning: High missing value percentage")
 
-```python
+```text
 
 2. **Validate correlations**:
 
@@ -871,7 +871,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    if high_corr:
        print(f"Warning: High correlations found: {high_corr}")
 
-```python
+```text
 
 3. **Use appropriate statistical methods**:
 
@@ -882,7 +882,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    # Spearman for monotonic relationships
    corr_spearman = analyzer.get_correlation_matrix(method='spearman')
 
-```text
+```yaml
 
 ### Visualization
 
@@ -921,7 +921,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    viz.create_histogram(column='price')
    plt.savefig('output.png', dpi=300, bbox_inches='tight')
 
-```python
+```text
 
 ## Tips and Tricks
 
@@ -933,7 +933,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    # Categorical data
    cleaner.convert_dtypes({'category': 'category'})  # Saves memory
 
-```python
+```text
 
 2. **Filter early**:
 
@@ -942,7 +942,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    df_filtered = df[df['date'] > '2023-01-01']
    analyzer = DataAnalyzer(df_filtered)
 
-```python
+```text
 
 3. **Avoid copying DataFrames**:
 
@@ -951,7 +951,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    cleaner = DataCleaner(df)
    cleaner.remove_duplicates()  # df is modified
 
-```python
+```text
 
 ### Common Patterns
 
@@ -1006,7 +1006,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    cleaner.remove_duplicates()
    print(f"After deduplication: {cleaner.df.shape}")
 
-```python
+```text
 
 2. **Inspect problematic records**:
 
@@ -1028,7 +1028,7 @@ print("\n✅ Analysis complete! Check outputs/ folder for visualizations.")
    assert cleaner.df.duplicated().sum() == 0, "Duplicates still present!"
    assert cleaner.df.isnull().sum().sum() == 0, "Missing values remain!"
 
-```python
+```text
 
 ---
 

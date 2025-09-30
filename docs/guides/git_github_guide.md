@@ -97,7 +97,7 @@ Working Directory  →  Staging Area  →  Repository
 
    (modify code)         (git add)          (git commit)
 
-```text
+```
 
 **Working Directory**: Where you edit files
 **Staging Area (Index)**: Where you prepare changes for commit
@@ -119,7 +119,7 @@ Working Directory  →  Staging Area  →  Repository
 
 git --version
 
-```bash
+```
 
 #### Option 2: Using Winget
 
@@ -127,7 +127,7 @@ git --version
 
 winget install --id Git.Git -e --source winget
 
-```bash
+```
 
 ### macOS
 
@@ -141,7 +141,7 @@ winget install --id Git.Git -e --source winget
 # Install Git
 brew install git
 
-```bash
+```
 
 #### Option 2: Official Installer
 
@@ -154,7 +154,7 @@ brew install git
 
 xcode-select --install
 
-```bash
+```
 
 Verify installation:
 
@@ -162,7 +162,7 @@ Verify installation:
 
 git --version
 
-```bash
+```
 
 ### Linux
 
@@ -173,7 +173,7 @@ git --version
 sudo apt update
 sudo apt install git
 
-```bash
+```
 
 #### Fedora/CentOS
 
@@ -181,7 +181,7 @@ sudo apt install git
 
 sudo dnf install git
 
-```bash
+```
 
 #### Arch Linux
 
@@ -189,7 +189,7 @@ sudo dnf install git
 
 sudo pacman -S git
 
-```bash
+```
 
 Verify installation:
 
@@ -197,7 +197,7 @@ Verify installation:
 
 git --version
 
-```bash
+```
 
 ### Initial Configuration
 
@@ -222,7 +222,7 @@ git config --global core.editor "nano"  # Nano editor
 # View your configuration
 git config --list
 
-```text
+```
 
 ## Git Basics
 
@@ -240,7 +240,7 @@ cd my-project
 git init
 
 # Your project is now a Git repository!
-```text
+```
 
 #### Cloning an existing repository
 
@@ -252,7 +252,7 @@ git clone https://github.com/username/repository.git
 # Clone into a specific folder
 git clone https://github.com/username/repository.git my-folder
 
-```text
+```
 
 ### Checking Repository Status
 
@@ -266,7 +266,7 @@ git status
 # - Which files have changes
 # - Which files are staged
 # - Which files are untracked
-```text
+```
 
 ### The Basic Workflow
 
@@ -287,7 +287,7 @@ git diff
 # See changes for a specific file
 git diff filename.py
 
-```python
+```
 
 #### 3. Stage your changes
 
@@ -305,7 +305,7 @@ git add file1.py file2.py
 # Stage all files of a certain type
 git add *.py
 
-```python
+```
 
 #### 4. Commit your changes
 
@@ -324,7 +324,7 @@ git commit -m "Add user authentication
 # Stage and commit in one step (only for tracked files)
 git commit -am "Fix typo in README"
 
-```text
+```
 
 ### Viewing History
 
@@ -348,7 +348,7 @@ git log -p
 # View last N commits
 git log -5  # Last 5 commits
 
-```text
+```
 
 ### Viewing Commit Details
 
@@ -363,7 +363,7 @@ git show abc123
 # Show changes in specific file from commit
 git show abc123:path/to/file.py
 
-```python
+```
 
 ### Undoing Changes
 
@@ -381,7 +381,7 @@ git checkout -- .
 git restore filename.py
 git restore .
 
-```python
+```
 
 #### Unstage files
 
@@ -396,7 +396,7 @@ git reset HEAD
 # Modern syntax (Git 2.23+)
 git restore --staged filename.py
 
-```python
+```
 
 #### Amend last commit
 
@@ -409,7 +409,7 @@ git commit --amend -m "Corrected message"
 git add forgotten_file.py
 git commit --amend --no-edit
 
-```python
+```
 
 ## Working with Branches
 
@@ -439,7 +439,7 @@ git checkout -b feature-login
 git switch feature-login           # Switch to existing branch
 git switch -c feature-login        # Create and switch to new branch
 
-```text
+```
 
 ### Viewing Branches
 
@@ -458,7 +458,7 @@ git branch -v
 git branch --merged
 git branch --no-merged
 
-```text
+```
 
 ### Merging Branches
 
@@ -473,7 +473,7 @@ git merge feature-login
 # Merge with no fast-forward (creates merge commit)
 git merge --no-ff feature-login
 
-```text
+```
 
 ### Deleting Branches
 
@@ -488,7 +488,7 @@ git branch -D feature-login
 # Delete remote branch
 git push origin --delete feature-login
 
-```text
+```
 
 ### Handling Merge Conflicts
 
@@ -521,7 +521,7 @@ git add file.py
 # 6. Complete the merge
 git commit -m "Resolve merge conflict"
 
-```python
+```
 
 ## GitHub Fundamentals
 
@@ -561,7 +561,7 @@ gh repo create my-project --public
 git remote add origin https://github.com/username/my-project.git
 git push -u origin main
 
-```text
+```
 
 ### Connecting Local and Remote Repositories
 
@@ -579,7 +579,7 @@ git remote set-url origin https://github.com/username/new-repository.git
 # Remove remote
 git remote remove origin
 
-```text
+```
 
 ### Pushing to GitHub
 
@@ -600,7 +600,7 @@ git push --all origin
 # Push with tags
 git push --tags
 
-```text
+```
 
 ### Pulling from GitHub
 
@@ -618,7 +618,7 @@ git fetch origin
 # View fetched changes
 git log origin/main
 
-```text
+```
 
 ### Cloning Repositories
 
@@ -633,7 +633,7 @@ git clone -b branch-name https://github.com/username/repository.git
 # Clone with different name
 git clone https://github.com/username/repository.git my-folder
 
-```text
+```
 
 ## Collaboration Workflow
 
@@ -652,7 +652,7 @@ git clone https://github.com/username/repository.git my-folder
 git clone https://github.com/YOUR-USERNAME/repository.git
 cd repository
 
-```bash
+```
 
 5. Add original repository as upstream:
 
@@ -660,7 +660,7 @@ cd repository
 
 git remote add upstream https://github.com/ORIGINAL-OWNER/repository.git
 
-```bash
+```
 
 ### Keeping Your Fork Updated
 
@@ -678,7 +678,7 @@ git merge upstream/main
 # Push to your fork
 git push origin main
 
-```text
+```
 
 ### Creating Pull Requests
 
@@ -692,7 +692,7 @@ git push origin main
 
 git checkout -b fix-typo
 
-```bash
+```
 
 2. **Make your changes and commit**:
 
@@ -701,7 +701,7 @@ git checkout -b fix-typo
 git add README.md
 git commit -m "Fix typo in README"
 
-```makefile
+```
 
 3. **Push to your fork**:
 
@@ -709,7 +709,7 @@ git commit -m "Fix typo in README"
 
 git push origin fix-typo
 
-```bash
+```
 
 4. **Create PR on GitHub**:
 
@@ -749,7 +749,7 @@ As a reviewer:
 git fetch origin pull/123/head:pr-123
 git checkout pr-123
 
-```bash
+```
 
 5. Approve or request changes
 6. Merge if approved
@@ -796,7 +796,7 @@ Actual: Nothing happens
 Browser: Chrome Mobile 120
 OS: Android 13
 
-```text
+```
 
 **Feature Request**:
 
@@ -813,7 +813,7 @@ Proposed solution:
 - Save preference in localStorage
 - Use CSS variables for colors
 
-```text
+```
 
 ## Best Practices
 
@@ -829,7 +829,7 @@ Proposed solution:
 
 <footer>
 
-```text
+```
 
 #### Types
 
@@ -862,7 +862,7 @@ git commit -m "refactor: change API response format
 BREAKING CHANGE: Response now returns data in 'payload' field
 instead of root level. Update client code accordingly."
 
-```text
+```
 
 #### Commit Message Tips
 
@@ -898,7 +898,7 @@ main                 o---o---o---o---o
                           \         /
 feature-login              o---o---o
 
-```bash
+```
 
 1. Create branch from `main`
 2. Develop feature
@@ -950,7 +950,7 @@ outputs/
 *.log
 data/raw/
 
-```text
+```
 
 #### Commit
 
@@ -1008,7 +1008,7 @@ gh repo create my-project --public
 git remote add origin https://github.com/username/my-project.git
 git push -u origin main
 
-```text
+```
 
 ### Contributing to an Open Source Project
 
@@ -1044,7 +1044,7 @@ git checkout main
 git merge upstream/main
 git push origin main
 
-```text
+```
 
 ### Fixing a Mistake
 
@@ -1055,7 +1055,7 @@ git push origin main
 # Fix last commit message
 git commit --amend -m "Correct message"
 
-```bash
+```
 
 #### Forgot to add files
 
@@ -1065,7 +1065,7 @@ git commit --amend -m "Correct message"
 git add forgotten_file.py
 git commit --amend --no-edit
 
-```bash
+```
 
 #### Committed to wrong branch
 
@@ -1082,7 +1082,7 @@ git cherry-pick abc123
 git checkout wrong-branch
 git reset --hard HEAD~1
 
-```text
+```
 
 #### Want to undo last commit
 
@@ -1094,7 +1094,7 @@ git reset HEAD~1
 # Undo commit, discard changes
 git reset --hard HEAD~1
 
-```text
+```
 
 ### Working with Multiple Remotes
 
@@ -1113,7 +1113,7 @@ git push colleague feature-branch
 git fetch upstream
 git fetch colleague
 
-```text
+```
 
 ## Troubleshooting
 
@@ -1140,7 +1140,7 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 
 # Add to GitHub: Settings → SSH and GPG keys → New SSH key
-```text
+```
 
 #### "fatal: refusing to merge unrelated histories"
 
@@ -1152,7 +1152,7 @@ cat ~/.ssh/id_ed25519.pub
 
 git pull origin main --allow-unrelated-histories
 
-```bash
+```
 
 #### "Your branch and 'origin/main' have diverged"
 
@@ -1165,7 +1165,7 @@ git pull origin main --allow-unrelated-histories
 git pull --rebase origin main
 git push
 
-```bash
+```
 
 **Solution 2** (if remote should be kept):
 
@@ -1174,7 +1174,7 @@ git push
 git fetch origin
 git reset --hard origin/main
 
-```bash
+```
 
 #### Merge conflicts
 
@@ -1196,7 +1196,7 @@ git add conflicted_file.py
 # 4. Complete merge
 git commit
 
-```python
+```
 
 #### Accidentally committed sensitive data
 
@@ -1215,7 +1215,7 @@ git filter-branch --force --index-filter \
 git push origin --force --all
 
 # IMPORTANT: Rotate the compromised credentials immediately!
-```text
+```
 
 #### Can't push: "Updates were rejected"
 
@@ -1233,7 +1233,7 @@ git pull origin main
 # Then push
 git push origin main
 
-```text
+```
 
 ### Getting Help
 
@@ -1250,7 +1250,7 @@ git help branch
 git commit --help
 git branch -h
 
-```text
+```
 
 ### Checking Git Configuration
 
@@ -1266,7 +1266,7 @@ git config user.email
 # View configuration with file locations
 git config --list --show-origin
 
-```text
+```
 
 ## Additional Resources
 
@@ -1354,7 +1354,7 @@ git remote -v                     # View remotes
 git fetch                         # Fetch changes
 git push origin <branch>          # Push branch
 
-```text
+```
 
 ---
 

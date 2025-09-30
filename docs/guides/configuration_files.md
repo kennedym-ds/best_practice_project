@@ -83,7 +83,7 @@ build/
 .DS_Store
 Thumbs.db
 
-```text
+```bash
 
 ### Pattern Syntax
 
@@ -108,7 +108,7 @@ Thumbs.db
    ```bash
    git rm --cached <file>  # Remove from Git, keep local copy
 
-```bash
+```text
 
 ### Example: Why We Ignore Each Category
 
@@ -145,7 +145,7 @@ htmlcov/
 .DS_Store     # macOS
 Thumbs.db     # Windows
 
-```python
+```bash
 
 ### Security Tip
 
@@ -254,7 +254,7 @@ cp .env.example .env
 # Edit .env with actual values
 nano .env
 
-```bash
+```text
 
 #### 2. **Document Each Variable**
 
@@ -408,7 +408,7 @@ load_dotenv(dotenv_path=env_path)
 
 # Restart your application/server after editing .env
 # Or use auto-reload in development (e.g., Flask debug mode)
-```bash
+```text
 
 ---
 
@@ -471,7 +471,7 @@ trim_trailing_whitespace = false  # Preserve 2-space line breaks
 [Makefile]
 indent_style = tab                # Makefiles must use tabs
 
-```makefile
+```properties
 
 ### Property Reference
 
@@ -546,7 +546,7 @@ indent_size = 4
 [**/migrations/*.py]
 max_line_length = off
 
-```python
+```text
 
 #### 3. **Align with Language Conventions**
 
@@ -569,7 +569,7 @@ indent_style = tab
 [*.{yml,yaml}]
 indent_size = 2
 
-```yaml
+```bash
 
 #### 4. **Match Your Formatters**
 
@@ -581,7 +581,7 @@ If using Black for Python:
 max_line_length = 88  # Match Black's default
 indent_size = 4
 
-```python
+```text
 
 If using Prettier for JavaScript:
 
@@ -590,7 +590,7 @@ If using Prettier for JavaScript:
 [*.{js,json,yml}]
 indent_size = 2  # Match Prettier's default
 
-```json
+```text
 
 ### Editor Support
 
@@ -617,7 +617,7 @@ echo "test  " > test.py  # Note trailing spaces
 # Open in editor with .editorconfig support
 # Save file
 # Trailing spaces should be removed automatically
-```python
+```text
 
 ### Common Issues
 
@@ -652,7 +652,7 @@ If not working, check editor documentation for precedence
 git add -A
 git commit -m "Apply EditorConfig formatting"
 
-```bash
+```text
 
 ---
 
@@ -705,7 +705,7 @@ Our `pyproject.toml` has several sections:
 [tool.isort]                # isort import sorter configuration
 [tool.mypy]                 # mypy type checker configuration
 
-```python
+```text
 
 ---
 
@@ -719,7 +719,7 @@ Our `pyproject.toml` has several sections:
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-```toml
+```text
 
 **Explanation:**
 
@@ -752,7 +752,7 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/data_analysis"]
 
-```toml
+```text
 
 **Why This Matters:**
 
@@ -767,7 +767,7 @@ packages = ["src/data_analysis"]
 $ python -m build
 ERROR: Unable to determine which files to ship inside the wheel
 
-```bash
+```text
 
 ---
 
@@ -809,7 +809,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
 ]
 
-```python
+```text
 
 **Field Explanations:**
 
@@ -871,7 +871,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Information Analysis",
 ]
 
-```python
+```text
 
 ---
 
@@ -990,7 +990,7 @@ markers = [
     "unit: marks tests as unit tests",
 ]
 
-```text
+```python
 
 **Key Options:**
 
@@ -1273,7 +1273,7 @@ mypy src/data_analysis/data_loader.py
 # Ignore errors from third-party packages
 mypy --ignore-missing-imports src/
 
-```python
+```text
 
 ---
 
@@ -1317,7 +1317,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
 ]
 
-```python
+```text
 
 ### 3. Keep Tool Configs in pyproject.toml
 
@@ -1371,7 +1371,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 
-```python
+```text
 
 ---
 
@@ -1386,7 +1386,7 @@ classifiers = [
 pip install .
 python -c "import data_analysis"  # ModuleNotFoundError
 
-```bash
+```text
 
 **Solution:**
 
@@ -1396,7 +1396,7 @@ python -c "import data_analysis"  # ModuleNotFoundError
 [tool.hatch.build.targets.wheel]
 packages = ["src/data_analysis"]
 
-```toml
+```text
 
 ### Issue 2: Build Fails with "No module named 'hatchling'"
 
@@ -1406,7 +1406,7 @@ packages = ["src/data_analysis"]
 
 python -m build
 # ERROR: No module named 'hatchling'
-```bash
+```text
 
 **Solution:**
 
@@ -1415,7 +1415,7 @@ python -m build
 # Install build tool and backend
 pip install build hatchling
 
-```bash
+```text
 
 ### Issue 3: pytest Not Finding Tests
 
@@ -1425,7 +1425,7 @@ pip install build hatchling
 
 pytest
 # collected 0 items
-```bash
+```text
 
 **Solution:**
 
@@ -1435,7 +1435,7 @@ pytest
 testpaths = ["tests"]  # Make sure this points to your test directory
 python_files = ["test_*.py"]  # Make sure your test files match this pattern
 
-```makefile
+```text
 
 ### Issue 4: mypy Complains About Missing Imports
 
@@ -1445,7 +1445,7 @@ python_files = ["test_*.py"]  # Make sure your test files match this pattern
 
 mypy src/
 # error: Cannot find implementation or library stub for module named 'pandas'
-```bash
+```text
 
 **Solution:**
 
@@ -1454,7 +1454,7 @@ mypy src/
 [tool.mypy]
 ignore_missing_imports = true  # Or install type stubs: pip install types-pandas
 
-```toml
+```text
 
 ---
 
@@ -1546,7 +1546,7 @@ scikit-learn>=1.3.0
 openpyxl>=3.1.0
 python-dotenv>=1.0.0
 
-```python
+```text
 
 **Purpose:** Only packages needed to **run** the application.
 
@@ -1700,7 +1700,7 @@ pytz>=2020.1
 # ... and many more
 
 # How do you lock ALL transitive dependencies?
-```python
+```text
 
 ### Solution: pip-tools
 
@@ -1710,7 +1710,7 @@ pytz>=2020.1
 
 pip install pip-tools
 
-```bash
+```text
 
 **Workflow:**
 
@@ -1744,7 +1744,7 @@ pip-compile requirements.in
 
 pip-sync requirements.txt
 
-```bash
+```text
 
 **Benefits:**
 
@@ -1781,7 +1781,7 @@ openpyxl>=3.1.0           # Excel support
 # Configuration
 python-dotenv>=1.0.0      # Environment variables
 
-```python
+```text
 
 ### 2. Use Minimum Versions, Not Exact
 
@@ -1838,7 +1838,7 @@ matplotlib>=3.7.0         # Plotting
 openpyxl>=3.1.0          # Excel file support (required for .xlsx)
 python-dotenv>=1.0.0     # Load .env files
 
-```python
+```text
 
 ### 5. Use Platform Markers for OS-Specific Dependencies
 
@@ -1853,7 +1853,7 @@ pyobjc-framework-Cocoa>=9.0 ; sys_platform == 'darwin'
 # Only on Linux
 python-dbus>=1.3.0 ; sys_platform == 'linux'
 
-```python
+```bash
 
 ### 6. Specify Python Version Requirement
 
@@ -1864,7 +1864,7 @@ python-dbus>=1.3.0 ; sys_platform == 'linux'
 
 pandas>=2.0.0
 
-```python
+```text
 
 Or use `requires-python` in `pyproject.toml`:
 
@@ -1873,7 +1873,7 @@ Or use `requires-python` in `pyproject.toml`:
 [project]
 requires-python = ">=3.9"
 
-```python
+```text
 
 ---
 
@@ -1957,7 +1957,7 @@ pip list --outdated
 pip install -r requirements.txt
 ERROR: Cannot install package-a==1.0 and package-b==2.0 because they have conflicting dependencies
 
-```bash
+```text
 
 **Solution:**
 
@@ -1981,7 +1981,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-```python
+```text
 
 ### Issue 2: "Package not found" in requirements.txt
 
@@ -1992,7 +1992,7 @@ pip install -r requirements.txt
 pip install -r requirements.txt
 ERROR: Could not find a version that satisfies the requirement some-package
 
-```bash
+```text
 
 **Solution:**
 
@@ -2010,7 +2010,7 @@ ERROR: Could not find a version that satisfies the requirement some-package
 
 pip install -r requirements.txt
 # Takes 10+ minutes to resolve dependencies
-```bash
+```text
 
 **Solution:**
 
@@ -2021,7 +2021,7 @@ pip install pip-tools
 pip-compile requirements.in  # Generates requirements.txt with pinned versions
 pip-sync requirements.txt    # Fast installation, no resolution
 
-```bash
+```text
 
 ### Issue 4: Different Versions on Different Machines
 
@@ -2094,7 +2094,7 @@ echo "pytest>=7.4.0" >> requirements-dev.txt
 # Install
 pip install -r requirements-dev.txt
 
-```text
+```bash
 
 ---
 
@@ -2178,7 +2178,7 @@ repos:
 
   - repo: adrienverge/yamllint             # 8. YAML linting
 
-```yaml
+```text
 
 ---
 
@@ -2257,7 +2257,7 @@ repos:
       language_version: python3.9
       args: ['--line-length=100']
 
-```python
+```text
 
 **What It Does:**
 
@@ -2275,7 +2275,7 @@ def my_function(x,y,z):
     result=x+y+z
     return result
 
-```python
+```text
 
 After Black:
 
@@ -2285,7 +2285,7 @@ def my_function(x, y, z):
     result = x + y + z
     return result
 
-```python
+```text
 
 **Configuration:**
 
@@ -2483,7 +2483,7 @@ result: str = add_numbers(1, 2)  # Error: Incompatible types (int vs str)
       additional_dependencies: ['bandit[toml]']
       exclude: '^tests/'          # Don't scan tests
 
-```toml
+```text
 
 **What It Does:**
 
@@ -2507,7 +2507,7 @@ data = pickle.loads(untrusted_data)  # ❌ Arbitrary code execution risk
 # Using shell=True (B602)
 subprocess.call(f"ls {user_input}", shell=True)  # ❌ Command injection risk
 
-```bash
+```text
 
 **Configuration:**
 
@@ -2531,7 +2531,7 @@ subprocess.call(f"ls {user_input}", shell=True)  # ❌ Command injection risk
 
       args: ['--fix']
 
-```markdown
+```text
 
 **What It Does:**
 
@@ -2580,7 +2580,7 @@ Line with spaces at end
 
       args: ['-d', '{extends: default, rules: {line-length: {max: 120}}}']
 
-```yaml
+```text
 
 **What It Does:**
 
@@ -2652,7 +2652,7 @@ git commit -m "Add feature"
 
 # If all pass: commit succeeds ✅
 # If any fail: commit blocked, see error messages ❌
-```yaml
+```text
 
 ### Fixing Failed Checks
 
@@ -2674,7 +2674,7 @@ git commit -m "Add feature"
 # Option 3: Skip hooks (use sparingly!)
 git commit -m "Add feature" --no-verify
 
-```python
+```text
 
 ### Running Manually
 
@@ -2702,7 +2702,7 @@ pre-commit autoupdate
 
 # Updates .pre-commit-config.yaml versions
 # Example: rev: v4.5.0 → rev: v4.6.0
-```yaml
+```text
 
 ---
 
@@ -2740,7 +2740,7 @@ pre-commit autoupdate
 git add .pre-commit-config.yaml
 git commit -m "Update pre-commit hooks"
 
-```yaml
+```text
 
 ### 4. Document How to Skip (For Emergencies)
 
@@ -2752,7 +2752,7 @@ Sometimes you need to commit even with failing checks:
 git commit -m "WIP: Work in progress" --no-verify
 
 # Better: Fix the issues before committing
-```bash
+```text
 
 ### 5. Configure Hooks Consistently
 
@@ -2769,7 +2769,7 @@ Make sure hook configs match tool configs:
 
       args: ['--line-length=100']  # ← Match pyproject.toml
 
-```yaml
+```text
 
 ```toml
 
@@ -2777,7 +2777,7 @@ Make sure hook configs match tool configs:
 [tool.black]
 line-length = 100  # ← Same as pre-commit args
 
-```toml
+```text
 
 ### 6. Exclude Generated Files
 
@@ -2792,7 +2792,7 @@ line-length = 100  # ← Same as pre-commit args
 
       exclude: '^(tests/|migrations/|.*_pb2\.py$)'
 
-```python
+```text
 
 ### 7. Use `--fix` Where Possible
 
@@ -2819,7 +2819,7 @@ line-length = 100  # ← Same as pre-commit args
 
       args: ['--fix']  # Automatically fixes markdown
 
-```markdown
+```text
 
 ---
 
@@ -2833,7 +2833,7 @@ line-length = 100  # ← Same as pre-commit args
 
 git commit -m "Test"
 # Hooks don't run
-```bash
+```text
 
 **Solution:**
 
@@ -2866,7 +2866,7 @@ pre-commit run --all-files
 
 # Some hooks may behave differently on different OS
 # Check Python version, tool versions
-```python
+```text
 
 ### Issue 3: Too Slow
 
@@ -2875,7 +2875,7 @@ pre-commit run --all-files
 ```bash
 
 # Pre-commit takes 30+ seconds every commit
-```bash
+```text
 
 **Solution:**
 
@@ -2944,7 +2944,7 @@ flake8 complains about Black's formatting
 
 pre-commit run --all-files
 # 500+ errors from existing code
-```bash
+```text
 
 **Solution:**
 
@@ -2969,7 +2969,7 @@ pre-commit run --all-files            # Now manually fix remaining
 
       exclude: '^(old_code/|legacy/)'  # Exclude problematic directories
 
-```yaml
+```text
 
 ---
 
@@ -3000,7 +3000,7 @@ jobs:
 
         uses: pre-commit/action@v3.0.0
 
-```python
+```text
 
 **Benefits:**
 
@@ -3039,7 +3039,7 @@ pip install pre-commit
 pre-commit install
 pre-commit run --all-files  # Initial cleanup
 
-```bash
+```text
 
 **Daily Use:**
 
@@ -3049,7 +3049,7 @@ pre-commit run --all-files  # Initial cleanup
 git commit -m "Add feature"
 
 # If hooks fail, fix issues and recommit
-```bash
+```text
 
 ---
 
@@ -3081,7 +3081,7 @@ make test
 # Make runs the configured command
 pytest --cov=src/data_analysis --cov-report=term-missing tests/
 
-```makefile
+```text
 
 **Basic Syntax:**
 
@@ -3091,7 +3091,7 @@ target: dependencies  ## Description
     command to run
     another command
 
-```makefile
+```text
 
 ---
 
@@ -3106,7 +3106,7 @@ help:  ## Show this help message
  @grep -E '^[a-zA-Z_-]+:._?## ._$$' $(MAKEFILE_LIST) | sort | \
    awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-```makefile
+```text
 
 **Usage:**
 
@@ -3114,7 +3114,7 @@ help:  ## Show this help message
 
 make help
 # Shows all available commands with descriptions
-```makefile
+```text
 
 **Why:**
 
@@ -3146,7 +3146,7 @@ make install
 # Development installation (includes pytest, black, sphinx, etc.)
 make install-dev
 
-```makefile
+```text
 
 **Why Two Targets?**
 
@@ -3183,7 +3183,7 @@ make test-verbose
 # Check code coverage
 make coverage
 # Opens htmlcov/index.html for detailed coverage report
-```makefile
+```text
 
 **Why:**
 
@@ -3231,7 +3231,7 @@ make type-check
 # Security scan
 make security
 
-```makefile
+```text
 
 **Why:**
 
@@ -3252,7 +3252,7 @@ docs:  ## Build documentation
 docs-serve:  ## Build and serve documentation locally
  cd docs && make html && python -m http.server --directory _build/html 8000
 
-```makefile
+```text
 
 **Usage:**
 
@@ -3265,7 +3265,7 @@ make docs
 # Build and serve on http://localhost:8000
 make docs-serve
 
-```makefile
+```text
 
 **Why:**
 
@@ -3291,7 +3291,7 @@ clean:  ## Clean up generated files
  find . -type d -name __pycache__ -exec rm -rf {} +
  find . -type f -name "*.pyc" -delete
 
-```python
+```text
 
 **Usage:**
 
@@ -3299,7 +3299,7 @@ clean:  ## Clean up generated files
 
 make clean
 
-```makefile
+```text
 
 **What It Removes:**
 
@@ -3324,7 +3324,7 @@ make clean
 build:  ## Build package
  python -m build
 
-```makefile
+```text
 
 **Usage:**
 
@@ -3332,7 +3332,7 @@ build:  ## Build package
 
 make build
 # Creates wheel and source distribution in dist/
-```makefile
+```text
 
 **Why:**
 
@@ -3364,7 +3364,7 @@ make pre-commit-install
 # Run all hooks manually
 make pre-commit-run
 
-```makefile
+```text
 
 **Why:**
 
@@ -3383,7 +3383,7 @@ venv:  ## Create virtual environment
  @echo "  Windows: .\\venv\\Scripts\\activate"
  @echo "  Unix/Mac: source venv/bin/activate"
 
-```python
+```text
 
 **Usage:**
 
@@ -3392,7 +3392,7 @@ venv:  ## Create virtual environment
 make venv
 # Creates venv/ directory
 # Shows activation command for your OS
-```makefile
+```text
 
 **Why:**
 
@@ -3408,7 +3408,7 @@ make venv
 
 all: format lint type-check test  ## Run format, lint, type-check, and test
 
-```makefile
+```text
 
 **Usage:**
 
@@ -3416,7 +3416,7 @@ all: format lint type-check test  ## Run format, lint, type-check, and test
 
 make all
 # Runs: format → lint → type-check → test
-```makefile
+```text
 
 **Why:**
 
@@ -3435,7 +3435,7 @@ make all
 target: dependency1 dependency2
     command to run
 
-```makefile
+```text
 
 **Example:**
 
@@ -3444,7 +3444,7 @@ target: dependency1 dependency2
 test: install-dev  ## Run tests (requires dev dependencies)
     pytest tests/
 
-```makefile
+```text
 
 **Means:** "To run `test`, first run `install-dev`, then run pytest"
 
@@ -3454,7 +3454,7 @@ test: install-dev  ## Run tests (requires dev dependencies)
 
 .PHONY: test lint clean
 
-```makefile
+```text
 
 **Why:**
 
@@ -3472,7 +3472,7 @@ SRC_DIR := src/
 test:
     $(PYTHON) -m pytest $(SRC_DIR)
 
-```python
+```text
 
 **Benefits:**
 
@@ -3488,7 +3488,7 @@ target:  ## This appears in help output
     # This is a regular comment
     command
 
-```makefile
+```text
 
 - `##` after target: Shown in `make help`
 - `#` on its own line: Internal comment
@@ -3504,7 +3504,7 @@ target:  ## This appears in help output
 # Make is pre-installed
 make test
 
-```makefile
+```text
 
 ### Windows
 
@@ -3518,7 +3518,7 @@ choco install make
 # Using Scoop
 scoop install make
 
-```makefile
+```text
 
 **Option 2: Use PowerShell Scripts**
 
@@ -3528,7 +3528,7 @@ Create `scripts/test.ps1`:
 
 pytest tests/
 
-```bash
+```text
 
 Run with:
 
@@ -3536,7 +3536,7 @@ Run with:
 
 .\scripts\test.ps1
 
-```bash
+```text
 
 **Option 3: Use Cross-Platform Task Runners**
 
@@ -3563,7 +3563,7 @@ We use Makefile because:
 
 # Without .PHONY:
 # If file named "test" exists, Make won't run command
-```makefile
+```text
 
 ### 2. Provide Help Target
 
@@ -3574,7 +3574,7 @@ help:  ## Show available commands
    awk 'BEGIN {FS = ":.*?## "}; {printf "%-20s %s\n", $$1, $$2}'
 
 # Developers run: make help
-```makefile
+```text
 
 ### 3. Make Help the Default Target
 
@@ -3585,7 +3585,7 @@ help:  ## Show available commands
 help:  ## Show available commands
     ...
 
-```makefile
+```text
 
 **Why:**
 
@@ -3600,7 +3600,7 @@ all: format lint type-check test  ## Run all checks
 
 ci: lint type-check test  ## CI pipeline (no formatting)
 
-```makefile
+```text
 
 **Benefits:**
 
@@ -3623,7 +3623,7 @@ clean:  ## Clean generated files (requires Unix shell)
 clean:  ## Clean generated files
  python scripts/clean.py  # Works everywhere
 
-```python
+```text
 
 ### 6. Document Each Target
 
@@ -3662,7 +3662,7 @@ setup: venv install-dev pre-commit-install  ## Complete development setup
  @echo "✅ Development environment ready!"
  @echo "Run 'make help' to see available commands"
 
-```makefile
+```text
 
 **Usage:**
 
@@ -3671,7 +3671,7 @@ setup: venv install-dev pre-commit-install  ## Complete development setup
 # New developer setup
 make setup
 # Creates venv, installs deps, installs hooks
-```makefile
+```text
 
 ### Pattern 2: Watch Mode
 
@@ -3680,7 +3680,7 @@ make setup
 watch-test:  ## Run tests on file changes
  pytest-watch tests/
 
-```makefile
+```text
 
 ### Pattern 3: Docker Integration
 
@@ -3701,7 +3701,7 @@ docker-test:  ## Run tests in Docker
 ci: lint type-check test  ## Run CI checks locally
  @echo "✅ All CI checks passed!"
 
-```makefile
+```text
 
 ---
 
@@ -3726,7 +3726,7 @@ if __name__ == "__main__":
     elif sys.argv[1] == "test":
         test()
 
-```python
+```text
 
 **Pros:**
 
@@ -3764,7 +3764,7 @@ def lint(c):
 invoke test
 invoke lint
 
-```bash
+```text
 
 **Pros:**
 
@@ -3796,7 +3796,7 @@ pytest = "^7.4.0"
 
 poetry run test
 
-```bash
+```text
 
 **Pros:**
 
@@ -3828,7 +3828,7 @@ lint:
 just test
 just lint
 
-```bash
+```text
 
 **Pros:**
 
@@ -3868,7 +3868,7 @@ choco install make
 wsl
 make test
 
-```makefile
+```text
 
 ### Issue 2: Tabs vs Spaces
 
@@ -3879,7 +3879,7 @@ make test
 test:  ## Run tests
     pytest tests/  ← Must be tab, not spaces
 
-```makefile
+```text
 
 **Error:**
 
@@ -3887,7 +3887,7 @@ test:  ## Run tests
 
 Makefile:2: *** missing separator. Stop.
 
-```makefile
+```text
 
 **Solution:**
 
@@ -3903,7 +3903,7 @@ Makefile:2: *** missing separator. Stop.
 
 make test
 # make: 'test' is up to date.
-```makefile
+```text
 
 **Cause:**
 File named "test" exists in directory
@@ -3914,7 +3914,7 @@ File named "test" exists in directory
 
 .PHONY: test  # ← Add this
 
-```makefile
+```text
 
 ### Issue 4: Variables Not Expanding
 
@@ -3926,7 +3926,7 @@ TEST_DIR = tests/
 test:
     pytest $TEST_DIR  # ❌ Doesn't work
 
-```makefile
+```text
 
 **Solution:**
 
@@ -3936,7 +3936,7 @@ TEST_DIR := tests/
 test:
     pytest $(TEST_DIR)  # ✅ Works
 
-```makefile
+```text
 
 ---
 
@@ -3980,7 +3980,7 @@ make test    # Run tests
 # Before pushing
 make all     # Ensure everything passes
 
-```makefile
+```text
 
 **Remember:**
 
@@ -4072,7 +4072,7 @@ lint:
   name: Code Quality Checks
   runs-on: ubuntu-latest
 
-```yaml
+```text
 
 **What It Does:**
 
@@ -4095,7 +4095,7 @@ lint:
    flake8 src/ tests/ --max-line-length=100
    mypy src/ --ignore-missing-imports
 
-```bash
+```text
 
 **Why `continue-on-error: true`:**
 
@@ -4122,7 +4122,7 @@ test:
       os: [ubuntu-latest, windows-latest, macos-latest]
       python-version: ['3.9', '3.10', '3.11', '3.12']
 
-```python
+```yaml
 
 **What It Does:**
 
@@ -4154,7 +4154,7 @@ test:
 strategy:
   fail-fast: false
 
-```yaml
+```text
 
 - Runs ALL 12 combinations even if one fails
 - See which specific OS/Python combos have issues
@@ -4181,7 +4181,7 @@ coverage:
   runs-on: ubuntu-latest
   needs: test
 
-```yaml
+```text
 
 **What It Does:**
 
@@ -4204,7 +4204,7 @@ coverage:
           --cov-report=html \
           --cov-report=term
 
-```bash
+```text
 
 2. **Upload to Codecov**:
 
@@ -4216,11 +4216,11 @@ coverage:
        file: ./coverage.xml
        fail_ci_if_error: false
 
-```yaml
+```text
 
-   - Codecov shows coverage trends over time
+- Codecov shows coverage trends over time
 
-   - `fail_ci_if_error: false`: Don't fail if upload fails
+- `fail_ci_if_error: false`: Don't fail if upload fails
 
 3. **Upload HTML report**:
 
@@ -4253,7 +4253,7 @@ security:
   name: Security Scan
   runs-on: ubuntu-latest
 
-```yaml
+```text
 
 **What It Does:**
 
@@ -4267,7 +4267,7 @@ security:
    ```bash
    safety check --json
 
-```bash
+```yaml
 
    - Checks requirements.txt against vulnerability database
 
@@ -4278,11 +4278,11 @@ security:
    ```bash
    bandit -r src/ -f json
 
-```bash
+```text
 
-   - Scans Python code for security issues
+- Scans Python code for security issues
 
-   - Finds: hardcoded passwords, SQL injection, pickle usage
+- Finds: hardcoded passwords, SQL injection, pickle usage
 
 **Why `continue-on-error: true`:**
 
@@ -4301,7 +4301,7 @@ Bandit:
   → src/auth.py:42: Hardcoded password detected (B105)
   → src/db.py:18: SQL injection risk (B608)
 
-```python
+```text
 
 ---
 
@@ -4313,7 +4313,7 @@ docs:
   name: Documentation Build
   runs-on: ubuntu-latest
 
-```yaml
+```text
 
 **What It Does:**
 
@@ -4329,7 +4329,7 @@ docs:
    cd docs
    make html
 
-```makefile
+```text
 
 2. **Upload documentation**:
 
@@ -4341,7 +4341,7 @@ docs:
        name: documentation
        path: docs/_build/html/
 
-```yaml
+```text
 
 **Why Build Docs in CI:**
 
@@ -4369,7 +4369,7 @@ build:
   runs-on: ubuntu-latest
   needs: [lint, test]
 
-```yaml
+```text
 
 **What It Does:**
 
@@ -4389,7 +4389,7 @@ build:
    ```bash
    python -m build
 
-```bash
+```yaml
 
    - Creates: `dist/data_analysis-0.1.0-py3-none-any.whl`
 
@@ -4400,13 +4400,13 @@ build:
    ```bash
    twine check dist/*
 
-```bash
+```text
 
-   - Validates PyPI requirements
+- Validates PyPI requirements
 
-   - Checks README rendering
+- Checks README rendering
 
-   - Validates metadata
+- Validates metadata
 
 3. **Upload artifacts**:
 
@@ -4418,7 +4418,7 @@ build:
        name: dist-packages
        path: dist/
 
-```yaml
+```text
 
 **Why Build in CI:**
 
@@ -4488,7 +4488,7 @@ Workflow (ci.yml)
 └─ Job 3: build
    └─ ...
 
-```bash
+```text
 
 **Definitions:**
 
@@ -4562,7 +4562,7 @@ build:
     python-version: '3.11'
     cache: 'pip'  # ← Caches pip dependencies
 
-```python
+```text
 
 **What Gets Cached:**
 
@@ -4589,7 +4589,7 @@ strategy:
     os: [ubuntu-latest, windows-latest, macos-latest]
     python-version: ['3.9', '3.10', '3.11', '3.12']
 
-```yaml
+```text
 
 **Creates 12 Jobs:**
 
@@ -4616,7 +4616,7 @@ strategy:
 
         python-version: '3.9'   # Skip Windows + Python 3.9
 
-```python
+```text
 
 **Use Cases:**
 
@@ -4641,7 +4641,7 @@ steps:
     run: |
       twine upload dist/* --username __token__ --password $PYPI_TOKEN
 
-```python
+```text
 
 **Setting Secrets:**
 
@@ -4676,7 +4676,7 @@ jobs:
 
       - run: echo "Test Env: $TEST_ENV"
 
-```python
+```text
 
 **Scopes:**
 
@@ -4776,7 +4776,7 @@ jobs:
     python-version: '3.11'
     cache: 'pip'  # ✅ Enables pip caching
 
-```python
+```text
 
 **Benefits:**
 
@@ -4900,7 +4900,7 @@ runs:
 
       shell: bash
 
-```bash
+```text
 
 **Use in Workflows:**
 
@@ -4914,7 +4914,7 @@ jobs:
 
       - run: pytest
 
-```python
+```text
 
 ### 7. Add Status Badges
 
@@ -4923,7 +4923,7 @@ jobs:
 # README.md
 ![CI](https://github.com/username/repo/workflows/CI%2FCD%20Pipeline/badge.svg)
 
-```markdown
+```text
 
 **Benefits:**
 
@@ -4968,7 +4968,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     # Only deploy on push to main
 
-```yaml
+```text
 
 **Common Conditions:**
 
@@ -5021,7 +5021,7 @@ deploy:
      with:
        python-version: '3.11'  # Same as local
 
-```yaml
+```text
 
 2. **Missing dependencies**
 
@@ -5029,7 +5029,7 @@ deploy:
    # Solution: Verify requirements.txt is complete
    pip freeze > requirements.txt
 
-```bash
+```text
 
 3. **Environment-specific code**
 
@@ -5055,7 +5055,7 @@ deploy:
      with:
        cache: 'pip'
 
-```yaml
+```text
 
 2. **Reduce matrix size**
 
@@ -5070,14 +5070,14 @@ deploy:
      os: [ubuntu-latest]
      python-version: ['3.9', '3.12']  # Only test min and max
 
-```python
+```text
 
 3. **Parallelize better**
 
    ```yaml
    # Run lint, test, docs in parallel (not sequential)
 
-```yaml
+```text
 
 ### Issue 3: Secrets Not Working
 
@@ -5170,7 +5170,7 @@ needs: [lint, test]
     name: my-artifact
     path: dist/
 
-```text
+```bash
 
 ---
 
@@ -5490,7 +5490,7 @@ Visit [choosealicense.com](https://choosealicense.com/) for guidance.
 # Create LICENSE file in project root
 touch LICENSE
 
-```bash
+```text
 
 ### Step 3: Add License Text
 
@@ -5558,7 +5558,7 @@ setup(
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```markdown
+```text
 
 ---
 
@@ -5627,7 +5627,7 @@ src/gpl_module/ → GPL v3 License
 
 # Copyright (c) 2024 Data Analysis Project Contributors
 # SPDX-License-Identifier: MIT
-```python
+```text
 
 **Apache License 2.0:**
 
@@ -5675,7 +5675,7 @@ src/gpl_module/ → GPL v3 License
 ```python
 
 # SPDX-License-Identifier: MIT
-```python
+```text
 
 **Benefits:**
 
@@ -5731,7 +5731,7 @@ MyProduct/
 │       └── LICENSE        (Must include this)
 └── NOTICES.txt            (List all third-party licenses)
 
-```python
+```yaml
 
 ### Q4: Do I need a lawyer?
 
@@ -5762,7 +5762,7 @@ LICENSE           # ← License text
 README.md         # ← Link to license
 pyproject.toml    # ← License identifier
 
-```bash
+```text
 
 ### 2. Use Standard Licenses
 
@@ -5793,7 +5793,7 @@ pyproject.toml    # ← License identifier
 # Check licenses of your dependencies
 pip-licenses
 
-```bash
+```text
 
 **Example Output:**
 
@@ -5804,7 +5804,7 @@ pip-licenses
  numpy      1.26.3   BSD 3-Clause
  requests   2.31.0   Apache 2.0
 
-```bash
+```text
 
 **Watch Out For:**
 
@@ -5841,7 +5841,7 @@ This project is licensed under the MIT License.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-```markdown
+```text
 
 **Apache 2.0:**
 
@@ -5849,7 +5849,7 @@ This project is licensed under the MIT License.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-```markdown
+```text
 
 **GPL v3:**
 
@@ -5857,7 +5857,7 @@ This project is licensed under the MIT License.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-```markdown
+```text
 
 **Result:**
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)

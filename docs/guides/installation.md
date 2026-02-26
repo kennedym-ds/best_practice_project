@@ -69,7 +69,7 @@ python -m venv venv
 pip install -e .
 
 # Or with development tools
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 ```bash
 
@@ -139,7 +139,7 @@ python -m venv venv
 pip install -e .
 
 # For development (includes testing, linting, documentation tools)
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 ```text
 
@@ -230,7 +230,7 @@ source venv/bin/activate
 pip install -e .
 
 # For development
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 ```text
 
@@ -349,7 +349,7 @@ source venv/bin/activate
 pip install -e .
 
 # For development
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 ```text
 
@@ -579,7 +579,7 @@ If you plan to contribute to the project:
 
 ```bash
 # Install development dependencies
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 # Install pre-commit hooks
 pre-commit install

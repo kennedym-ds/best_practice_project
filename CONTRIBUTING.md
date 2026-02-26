@@ -54,7 +54,7 @@ python -m venv venv
 source venv/bin/activate
 
 # Install development dependencies
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 # Install pre-commit hooks
 pre-commit install

@@ -3132,7 +3132,7 @@ install:  ## Install package and dependencies
  pip install -e .
 
 install-dev:  ## Install package with development dependencies
- pip install -e ".[dev,docs,test]"
+ pip install -e ".[dev,docs]"
 
 ```text
 

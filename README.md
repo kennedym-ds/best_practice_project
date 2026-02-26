@@ -8,6 +8,8 @@
 
 A comprehensive Python data analysis project demonstrating best practices in software engineering, testing, documentation, and CI/CD workflows.
 
+> ℹ️ Update the `yourusername` placeholders in badge/link URLs when publishing this repository from your own GitHub account.
+
 ## ✨ Features
 
 - **🔄 Data Loading**: Support for multiple formats (CSV, Excel, JSON)
@@ -49,7 +51,7 @@ A comprehensive Python data analysis project demonstrating best practices in sof
    pip install -e .
 
    # For developers (includes testing and documentation tools)
-   pip install -e ".[dev,docs,test]"
+   pip install -e ".[dev,docs]"
    ```
 
 ### Basic Usage
@@ -142,7 +144,7 @@ best_practice_project/
 
 ```bash
 # Install development dependencies
-pip install -e ".[dev,docs,test]"
+pip install -e ".[dev,docs]"
 
 # Install pre-commit hooks
 pre-commit install
@@ -178,6 +180,10 @@ flake8 src/ tests/
 
 # Type check
 mypy src/data_analysis/
+
+# Security checks
+bandit -r src/
+safety check
 
 # Run all checks
 make all
